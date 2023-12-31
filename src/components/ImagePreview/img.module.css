@@ -1,0 +1,8 @@
+.smimg {
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.mainimg:hover .smimg {
+  opacity: 1;
+}
