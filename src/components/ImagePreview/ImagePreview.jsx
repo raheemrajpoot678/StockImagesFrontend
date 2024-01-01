@@ -9,9 +9,12 @@ import FullImgPrev from "../FullImagePrev/FullImgPrev";
 import expandImg from "../../assets/expand.png";
 import classes from "./img.module.css";
 import loading from "../../assets/loding2.webp";
+import { Helmet } from "react-helmet";
+import DropdownButton from "../Buttons/DropdownButton";
 
 const ImagePreview = ({ data }) => {
   const [img, setImg] = useState("");
+  const [title, setTitle] = useState("");
   const [fullimg, setFullimg] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
@@ -19,6 +22,7 @@ const ImagePreview = ({ data }) => {
   const findImg = () => {
     const item = data.find((item) => item.id == id);
     setImg(item.imgSrc);
+    setTitle(item.title);
   };
 
   useEffect(() => {
@@ -45,6 +49,9 @@ const ImagePreview = ({ data }) => {
 
   return (
     <>
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
       <div className="h-full w-full">
         {fullimg && <FullImgPrev img={img} setFullimg={setFullimg} />}
       </div>
@@ -149,19 +156,23 @@ const ImagePreview = ({ data }) => {
               </div>
 
               <div className="flex flex-row">
-                <button className="border border-stone-300 w-[5rem] h-[2.3rem] mr-2 px-4 rounded-md flex items-center justify-center">
+                <button className="border border-stone-300  mr-2 px-4 rounded-md flex items-center justify-center">
                   <img src={heart} className="w-[.9rem] h-[0.9rem]" />
                 </button>
-                <button
-                  onClick={() => downloadImg(img)}
-                  className="bg-stone-900 text-white w-[100%] h-[2.3rem] px-4 rounded-md"
-                >
-                  Download Free
-                </button>
+                <div className="flex items-center justify-center w-[12rem]">
+                  <button
+                    onClick={() => downloadImg(img)}
+                    className="bg-stone-900 text-white w-[100%] h-[2.3rem] px-4 rounded-s-md"
+                  >
+                    Download Free
+                  </button>
+                  <DropdownButton />
+                </div>
               </div>
             </div>
             {/* End details  */}
           </div>
+          <h1 className="text-xl text-stone-800">image 1</h1>
         </div>
       </div>
     </>

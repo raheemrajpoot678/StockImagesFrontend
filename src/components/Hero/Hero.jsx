@@ -7,6 +7,7 @@ import ImagePreview from "../ImagePreview/ImagePreview";
 import { useEffect, useState } from "react";
 import { heroImg } from "../../data";
 import { Link } from "react-router-dom";
+import Spiner from "../Spiner/Spiner";
 const Hero = () => {
   const [showimg, setShowimg] = useState(false);
   const [img1, setImg1] = useState({});
@@ -76,7 +77,7 @@ const Hero = () => {
         <div className="flex items-center justify-between basis-[48%] ">
           <Link to={`/images/${img1.id}`}>
             <div
-              className={`${classes.mainBox}`}
+              className={`${classes.mainBox} flex items-center justify-center w-[17rem] h-[17rem]`}
               onClick={(e) => {
                 if (e.target.className !== "opacity-100") {
                   setShowimg(true);
@@ -84,10 +85,14 @@ const Hero = () => {
                 }
               }}
             >
-              <img
-                className="w-[17rem] h-[17rem] rounded-md shadow-md"
-                src={img1.imgSrc || loding2}
-              />
+              {img1.imgSrc ? (
+                <img
+                  className="w-[17rem] h-[17rem] rounded-md shadow-md"
+                  src={img1.imgSrc || loding2}
+                />
+              ) : (
+                <Spiner />
+              )}
               <div className={`${classes.overlay}`}>
                 <div className="flex items-center"></div>
                 <button
@@ -101,7 +106,7 @@ const Hero = () => {
           </Link>
           <Link to={`/images/${img2.id}`}>
             <div
-              className={`${classes.mainBox}`}
+              className={`${classes.mainBox} flex items-center justify-center w-[17rem] h-[17rem]`}
               onClick={(e) => {
                 if (e.target.className !== "opacity-100") {
                   setShowimg(true);
@@ -109,10 +114,14 @@ const Hero = () => {
                 }
               }}
             >
-              <img
-                className="w-[17rem] h-[17rem] rounded-md shadow-md"
-                src={img2.imgSrc || loding2}
-              />
+              {img2.imgSrc ? (
+                <img
+                  className="w-[17rem] h-[17rem] rounded-md shadow-md"
+                  src={img2.imgSrc || loding2}
+                />
+              ) : (
+                <Spiner />
+              )}
               <div className={`${classes.overlay}`}>
                 <div className="flex items-center"></div>
                 <button
