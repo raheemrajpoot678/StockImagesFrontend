@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { saveAs } from "file-saver";
 
-const DropdownButton = ({ data, img }) => {
+const DropdownButton = ({ data, img, title }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [smallPx, setSmallPx] = useState({ width: 640, height: 640 });
   const [mediumPx, setMeduimPx] = useState({ width: 1920, height: 640 });
@@ -38,11 +38,15 @@ const DropdownButton = ({ data, img }) => {
   }, [data]);
 
   //  reasize and Download
+  // const [resizedImageUrl, setResizedImageUrl] = useState("");
+  // const [imageUrl, setImageUrl] = useState(img);
+  // const [downloadFileName, setDownloadFileName] = useState("raheem.png");
+
   const [resizedImageUrl, setResizedImageUrl] = useState("");
-  const [imageUrl, setImageUrl] = useState(img);
-  const [downloadFileName, setDownloadFileName] = useState("raheem.png");
-  const [targetWidth, setTargetWidth] = useState("1200");
-  const [targetHeight, setTargetHeight] = useState("200");
+  const [targetHeight, setTargetHeight] = useState(null);
+  const [targetWidth, setTargetWidth] = useState(null);
+  let imageUrl = img;
+  let downloadFileName = `${title}.png`;
 
   useEffect(() => {
     const resizeImage = async () => {
@@ -71,17 +75,15 @@ const DropdownButton = ({ data, img }) => {
         console.error("Error resizing image:", error);
       }
     };
-
-    resizeImage();
+    targetHeight && targetWidth && resizeImage();
   }, [imageUrl, targetWidth, targetHeight]);
   const handleDownload = () => {
-    // const link = document.createElement("a");
-    // link.href = resizedImageUrl;
-    // link.download = downloadFileName || "resized_image";
-    // document.body.appendChild(link);
-    // link.click();
-    // document.body.removeChild(link);
-    saveAs(resizedImageUrl, "rana.png");
+    const link = document.createElement("a");
+    link.href = resizedImageUrl;
+    link.download = downloadFileName || "resized_image";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -118,7 +120,11 @@ const DropdownButton = ({ data, img }) => {
                 href="#"
                 className="block text-left px-4 py-[8px] w-full text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                 role="menuitem"
-                onClick={handleDownload}
+                onClick={() => {
+                  setTargetWidth(smallPx.width);
+                  setTargetHeight(smallPx.height);
+                  targetHeight && targetWidth == 640 && handleDownload();
+                }}
               >
                 <span className="font-semibold text-[13px]">Small</span>{" "}
                 <span className="text-stone-500 text-[13px]">{`(${smallPx.width} x ${smallPx.height})`}</span>
@@ -127,7 +133,11 @@ const DropdownButton = ({ data, img }) => {
                 href="#"
                 className="block text-left px-4 py-[8px] text-sm w-full text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                 role="menuitem"
-                onClick={handleDownload}
+                onClick={() => {
+                  setTargetWidth(mediumPx.width);
+                  setTargetHeight(mediumPx.height);
+                  targetHeight && targetWidth == 1920 && handleDownload();
+                }}
               >
                 <span className="font-semibold text-[13px]">Medium</span>{" "}
                 <span className="text-stone-500 text-[13px]">{`(${mediumPx.width} x ${mediumPx.height})`}</span>
@@ -136,7 +146,11 @@ const DropdownButton = ({ data, img }) => {
                 href="#"
                 className="block text-left px-4 py-[8px] text-sm w-full text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                 role="menuitem"
-                onClick={handleDownload}
+                onClick={() => {
+                  setTargetWidth(largePx.width);
+                  setTargetHeight(largePx.height);
+                  targetHeight && targetWidth == 2400 && handleDownload();
+                }}
               >
                 <span className="font-semibold text-[13px]">Large</span>{" "}
                 <span className="text-stone-500 text-[13px]">{`(${largePx.width} x ${largePx.height})`}</span>
@@ -145,7 +159,11 @@ const DropdownButton = ({ data, img }) => {
                 href="#"
                 className="block  text-left px-4 py-4 border-t-2 border-stone-400/50 text-sm w-full text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                 role="menuitem"
-                onClick={handleDownload}
+                onClick={() => {
+                  setTargetWidth(data.width);
+                  setTargetHeight(data.height);
+                  targetHeight && targetWidth == data.width && handleDownload();
+                }}
               >
                 <span className="font-semibold text-[13px]">Original Size</span>{" "}
                 <span className="text-stone-500 text-[13px]">{`(${data.width} x ${data.height})`}</span>

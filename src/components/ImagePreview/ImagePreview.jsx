@@ -177,11 +177,15 @@ const ImagePreview = ({ data }) => {
                   <div className="flex items-center justify-center w-[12rem]">
                     <button
                       onClick={() => downloadImg(img)}
-                      className="bg-stone-900 text-white w-[100%] h-[2.3rem] px-4 rounded-s-md"
+                      className="bg-stone-900 text-white w-[100%] h-[2.3rem] leading-[33px] px-4 rounded-s-md"
                     >
                       Download Free
                     </button>
-                    <DropdownButton data={currentImgData} img={img} />
+                    <DropdownButton
+                      data={currentImgData}
+                      img={img}
+                      title={title}
+                    />
                   </div>
                 </div>
               </div>
