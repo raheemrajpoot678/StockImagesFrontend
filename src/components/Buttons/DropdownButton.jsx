@@ -125,6 +125,10 @@ const DropdownButton = ({ data, img, title }) => {
                   setTargetHeight(smallPx.height);
                   targetHeight && targetWidth == 640 && handleDownload();
                 }}
+                onMouseOver={() => {
+                  setTargetWidth(smallPx.width);
+                  setTargetHeight(smallPx.height);
+                }}
               >
                 <span className="font-semibold text-[13px]">Small</span>{" "}
                 <span className="text-stone-500 text-[13px]">{`(${smallPx.width} x ${smallPx.height})`}</span>
@@ -137,6 +141,10 @@ const DropdownButton = ({ data, img, title }) => {
                   setTargetWidth(mediumPx.width);
                   setTargetHeight(mediumPx.height);
                   targetHeight && targetWidth == 1920 && handleDownload();
+                }}
+                onMouseOver={() => {
+                  setTargetWidth(mediumPx.width);
+                  setTargetHeight(mediumPx.height);
                 }}
               >
                 <span className="font-semibold text-[13px]">Medium</span>{" "}
@@ -151,6 +159,10 @@ const DropdownButton = ({ data, img, title }) => {
                   setTargetHeight(largePx.height);
                   targetHeight && targetWidth == 2400 && handleDownload();
                 }}
+                onMouseOver={() => {
+                  setTargetWidth(largePx.width);
+                  setTargetHeight(largePx.height);
+                }}
               >
                 <span className="font-semibold text-[13px]">Large</span>{" "}
                 <span className="text-stone-500 text-[13px]">{`(${largePx.width} x ${largePx.height})`}</span>
@@ -163,6 +175,10 @@ const DropdownButton = ({ data, img, title }) => {
                   setTargetWidth(data.width);
                   setTargetHeight(data.height);
                   targetHeight && targetWidth == data.width && handleDownload();
+                }}
+                onMouseOver={() => {
+                  setTargetWidth(data.width);
+                  setTargetHeight(data.height);
                 }}
               >
                 <span className="font-semibold text-[13px]">Original Size</span>{" "}
