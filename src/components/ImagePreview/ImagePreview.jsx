@@ -13,9 +13,14 @@ import { Helmet } from "react-helmet";
 import DropdownButton from "../Buttons/DropdownButton";
 
 const ImagePreview = ({ data }) => {
-  const [img, setImg] = useState("");
+  const [img, setImg] = useState(null);
   const [title, setTitle] = useState("");
   const [fullimg, setFullimg] = useState(false);
+  const [currentImgData, setCurrentImgData] = useState({
+    width: null,
+    height: null,
+  });
+
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -30,6 +35,9 @@ const ImagePreview = ({ data }) => {
     findImg();
     console.log(window.location.href);
   }, []);
+  // useEffect(() => {
+  //   forceUpdate();
+  // }, [img]);
   const tags = [
     "Lorem",
     "ipsum",
@@ -55,7 +63,7 @@ const ImagePreview = ({ data }) => {
       <div className="h-full w-full">
         {fullimg && <FullImgPrev img={img} setFullimg={setFullimg} />}
       </div>
-      <div className={`bg-[url('${img}')] w-[100%] h-[105vh] z-[40]`}>
+      <div className={`bg-[url('${img}')] w-[100%] h-[100vh] z-[40]`}>
         <div
           id="overlay"
           onClick={(e) => {
@@ -71,108 +79,123 @@ const ImagePreview = ({ data }) => {
           >
             ✕
           </button>
-          <div className="bg-white w-[90%] flex justify-between p-8 mx-auto min-h-[100vh] rounded-md pb-20 shadow-xl">
-            {/* Image  */}
-            <div className="basis-[76%]">
-              <div
-                className={`${classes.mainimg} relative w-fit mx-auto duration-300`}
-              >
+          <div className="bg-white w-[90%]  p-8 mx-auto min-h-[100vh] rounded-md pb-10 mb-10 shadow-xl">
+            <div className="flex justify-between">
+              {/* Image  */}
+              <div className="basis-[76%]">
                 <div
-                  onClick={() => setFullimg(true)}
-                  className={`${classes.smimg} cursor-pointer`}
+                  className={`${classes.mainimg} relative w-fit mx-auto duration-300`}
                 >
+                  <div
+                    onClick={() => setFullimg(true)}
+                    className={`${classes.smimg} cursor-pointer`}
+                  >
+                    <img
+                      className="w-[2rem] h-[2rem] bg-slate-50/50 backdrop-blur-md p-2 rounded-lg absolute top-5 right-5 duration-300"
+                      src={expandImg}
+                    />
+                  </div>
+
                   <img
-                    className="w-[2rem] h-[2rem] bg-slate-50/50 backdrop-blur-md p-2 rounded-lg absolute top-5 right-5 duration-300"
-                    src={expandImg}
+                    onLoad={(e) => {
+                      setCurrentImgData({
+                        width: e.target.naturalWidth,
+                        height: e.target.naturalHeight,
+                      });
+                    }}
+                    onDoubleClick={() => setFullimg(true)}
+                    className="max-h-[32rem] mx-auto"
+                    src={img || loading}
                   />
                 </div>
-
-                <img
-                  onDoubleClick={() => setFullimg(true)}
-                  className="max-h-[32rem] mx-auto"
-                  src={img || loading}
-                />
               </div>
-            </div>
-            {/* End Image  */}
-            {/* Details  */}
-            <div className="basis-[22%] flex flex-col justify-between ">
-              <div>
-                <div className="flex flex-row items-center">
-                  <img
-                    className="w-11 h-11 rounded-3xl border border-stone-500/30"
-                    src={img}
-                    alt="creater"
-                  />
-                  <div className="leading-[1.2]">
-                    <h4 className="text-stone-600 ml-2 font-semibold">
-                      Unknow
-                    </h4>
-                    <p className="text-stone-500 ml-2 text-[.8rem]">
-                      Lorem ipsum dolor sit amet.
+              {/* End Image  */}
+              {/* Details  */}
+              <div className="basis-[22%] flex flex-col justify-between ">
+                <div>
+                  <div className="flex flex-row items-center">
+                    <img
+                      className="w-11 h-11 rounded-3xl border border-stone-500/30"
+                      src={img}
+                      alt="creater"
+                    />
+                    <div className="leading-[1.2]">
+                      <h4 className="text-stone-600 ml-2 font-semibold">
+                        Unknow
+                      </h4>
+                      <p className="text-stone-500 ml-2 text-[.8rem]">
+                        Lorem ipsum dolor sit amet.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="mt-6">
+                    <p className="text-stone-500 text-[.7rem]">
+                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                      Culpa animi a accusamus autem saepe praesentium molestiae
+                      aut libero sint ipsum.
                     </p>
                   </div>
-                </div>
-                <div className="mt-6">
-                  <p className="text-stone-500 text-[.7rem]">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Culpa animi a accusamus autem saepe praesentium molestiae
-                    aut libero sint ipsum.
-                  </p>
-                </div>
-                <div>
-                  <div className="text-stone-500 flex items-center mt-6">
-                    <img
-                      src={location}
-                      className="w-[9px] h-[9px] mr-2 opacity-[50%]"
-                    />
-                    <p className="text-[.7rem]">Seattle, WA, USA</p>
-                  </div>
-                  <div className="text-stone-500 items-center flex mt-1">
-                    <img
-                      src={date}
-                      className="w-[9px] h-[9px] mr-2 opacity-[50%]"
-                    />
-                    <p className="text-[.7rem]">Published 5 days ago</p>
-                  </div>
-                </div>
-                <div className="mt-5">
-                  <h4 className="font-semibold text-stone-600 mb-2 text-[14px]">
-                    Categories
-                  </h4>
                   <div>
-                    {imgCategories.map((cat) => {
-                      return (
-                        <button
-                          key={cat}
-                          className="border-stone-300 py-[1px] bg-[#eee] text-[12px] text-[#555] px-2 rounded-md mr-1 mb-1"
-                        >
-                          {cat}
-                        </button>
-                      );
-                    })}
+                    <div className="text-stone-500 flex items-center mt-6">
+                      <img
+                        src={location}
+                        className="w-[9px] h-[9px] mr-2 opacity-[50%]"
+                      />
+                      <p className="text-[.7rem]">Seattle, WA, USA</p>
+                    </div>
+                    <div className="text-stone-500 items-center flex mt-1">
+                      <img
+                        src={date}
+                        className="w-[9px] h-[9px] mr-2 opacity-[50%]"
+                      />
+                      <p className="text-[.7rem]">Published 5 days ago</p>
+                    </div>
+                  </div>
+                  <div className="mt-5">
+                    <h4 className="font-semibold text-stone-600 mb-2 text-[14px]">
+                      Categories
+                    </h4>
+                    <div>
+                      {imgCategories.map((cat) => {
+                        return (
+                          <button
+                            key={cat}
+                            className="border-stone-300 py-[1px] bg-[#eee] text-[12px] text-[#555] px-2 rounded-md mr-1 mb-1"
+                          >
+                            {cat}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-row">
+                  <button className="border border-stone-300  mr-2 px-4 rounded-md flex items-center justify-center">
+                    <img src={heart} className="w-[.9rem] h-[0.9rem]" />
+                  </button>
+                  <div className="flex items-center justify-center w-[12rem]">
+                    <button
+                      onClick={() => downloadImg(img)}
+                      className="bg-stone-900 text-white w-[100%] h-[2.3rem] px-4 rounded-s-md"
+                    >
+                      Download Free
+                    </button>
+                    <DropdownButton data={currentImgData} img={img} />
                   </div>
                 </div>
               </div>
-
-              <div className="flex flex-row">
-                <button className="border border-stone-300  mr-2 px-4 rounded-md flex items-center justify-center">
-                  <img src={heart} className="w-[.9rem] h-[0.9rem]" />
-                </button>
-                <div className="flex items-center justify-center w-[12rem]">
-                  <button
-                    onClick={() => downloadImg(img)}
-                    className="bg-stone-900 text-white w-[100%] h-[2.3rem] px-4 rounded-s-md"
-                  >
-                    Download Free
-                  </button>
-                  <DropdownButton />
-                </div>
-              </div>
+              {/* End details  */}
             </div>
-            {/* End details  */}
+            <div className="text-3xl">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur
+              minima quo dignissimos magni, nesciunt sed laudantium explicabo ab
+              eveniet quod illum repellat ut doloribus magnam distinctio labore
+              tempora, atque hic, laboriosam molestias et sit? A ad, molestias,
+              nulla id sint earum omnis dolorum soluta doloremque voluptate
+              corporis ducimus cum!
+            </div>
           </div>
-          <h1 className="text-xl text-stone-800">image 1</h1>
         </div>
       </div>
     </>
