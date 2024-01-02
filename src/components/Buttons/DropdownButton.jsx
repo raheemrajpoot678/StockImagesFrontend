@@ -46,7 +46,7 @@ const DropdownButton = ({ data, img, title }) => {
   const [targetHeight, setTargetHeight] = useState(null);
   const [targetWidth, setTargetWidth] = useState(null);
   let imageUrl = img;
-  let downloadFileName = `${title}.png`;
+  let downloadFileName = `${document.title}.png`;
 
   useEffect(() => {
     const resizeImage = async () => {
