@@ -46,7 +46,7 @@ const DropdownButton = ({ data, img, title }) => {
   const [targetHeight, setTargetHeight] = useState(null);
   const [targetWidth, setTargetWidth] = useState(null);
   let imageUrl = img;
-  let downloadFileName = `${document.title}.png`;
+  let downloadFileName = `${title}.png`;
 
   useEffect(() => {
     const resizeImage = async () => {
@@ -121,11 +121,9 @@ const DropdownButton = ({ data, img, title }) => {
                 className="block text-left px-4 py-[8px] w-full text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                 role="menuitem"
                 onClick={() => {
-                  setTargetWidth(smallPx.width);
-                  setTargetHeight(smallPx.height);
-                  targetHeight && targetWidth == 640 && handleDownload();
+                  handleDownload();
                 }}
-                onMouseOver={() => {
+                onMouseMove={() => {
                   setTargetWidth(smallPx.width);
                   setTargetHeight(smallPx.height);
                 }}
@@ -138,11 +136,9 @@ const DropdownButton = ({ data, img, title }) => {
                 className="block text-left px-4 py-[8px] text-sm w-full text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                 role="menuitem"
                 onClick={() => {
-                  setTargetWidth(mediumPx.width);
-                  setTargetHeight(mediumPx.height);
-                  targetHeight && targetWidth == 1920 && handleDownload();
+                  handleDownload();
                 }}
-                onMouseOver={() => {
+                onMouseMove={() => {
                   setTargetWidth(mediumPx.width);
                   setTargetHeight(mediumPx.height);
                 }}
@@ -155,11 +151,9 @@ const DropdownButton = ({ data, img, title }) => {
                 className="block text-left px-4 py-[8px] text-sm w-full text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                 role="menuitem"
                 onClick={() => {
-                  setTargetWidth(largePx.width);
-                  setTargetHeight(largePx.height);
-                  targetHeight && targetWidth == 2400 && handleDownload();
+                  handleDownload();
                 }}
-                onMouseOver={() => {
+                onMouseMove={() => {
                   setTargetWidth(largePx.width);
                   setTargetHeight(largePx.height);
                 }}
@@ -172,11 +166,9 @@ const DropdownButton = ({ data, img, title }) => {
                 className="block  text-left px-4 py-4 border-t-2 border-stone-400/50 text-sm w-full text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                 role="menuitem"
                 onClick={() => {
-                  setTargetWidth(data.width);
-                  setTargetHeight(data.height);
-                  targetHeight && targetWidth == data.width && handleDownload();
+                  handleDownload();
                 }}
-                onMouseOver={() => {
+                onMouseMove={() => {
                   setTargetWidth(data.width);
                   setTargetHeight(data.height);
                 }}
