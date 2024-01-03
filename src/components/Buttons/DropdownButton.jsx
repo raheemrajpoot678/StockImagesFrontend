@@ -46,8 +46,8 @@ const DropdownButton = ({ data, img, title }) => {
   // const [downloadFileName, setDownloadFileName] = useState("raheem.png");
 
   const [resizedImageUrl, setResizedImageUrl] = useState("");
-  const [targetHeight, setTargetHeight] = useState(null);
-  const [targetWidth, setTargetWidth] = useState(null);
+  const [targetHeight, setTargetHeight] = useState(800);
+  const [targetWidth, setTargetWidth] = useState(1000);
   let imageUrl = img;
   let downloadFileName = `${title}.png`;
 
@@ -78,7 +78,7 @@ const DropdownButton = ({ data, img, title }) => {
         console.error("Error resizing image:", error);
       }
     };
-    targetHeight && targetWidth && resizeImage();
+    resizeImage();
   }, [imageUrl, targetWidth, targetHeight]);
   const handleDownload = () => {
     // const link = document.createElement("a");
