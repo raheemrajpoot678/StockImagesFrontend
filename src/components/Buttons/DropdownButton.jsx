@@ -78,12 +78,13 @@ const DropdownButton = ({ data, img, title }) => {
     targetHeight && targetWidth && resizeImage();
   }, [imageUrl, targetWidth, targetHeight]);
   const handleDownload = () => {
-    const link = document.createElement("a");
-    link.href = resizedImageUrl;
-    link.download = downloadFileName || "resized_image";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // const link = document.createElement("a");
+    // link.href = resizedImageUrl;
+    // link.download = downloadFileName || "resized_image";
+    // document.body.appendChild(link);
+    // link.click();
+    // document.body.removeChild(link);
+    saveAs(resizedImageUrl, downloadFileName);
   };
 
   return (
@@ -126,6 +127,7 @@ const DropdownButton = ({ data, img, title }) => {
                 onMouseMove={() => {
                   setTargetWidth(smallPx.width);
                   setTargetHeight(smallPx.height);
+                  console.log(smallPx);
                 }}
               >
                 <span className="font-semibold text-[13px]">Small</span>{" "}
@@ -141,6 +143,7 @@ const DropdownButton = ({ data, img, title }) => {
                 onMouseMove={() => {
                   setTargetWidth(mediumPx.width);
                   setTargetHeight(mediumPx.height);
+                  console.log(mediumPx);
                 }}
               >
                 <span className="font-semibold text-[13px]">Medium</span>{" "}
@@ -156,6 +159,7 @@ const DropdownButton = ({ data, img, title }) => {
                 onMouseMove={() => {
                   setTargetWidth(largePx.width);
                   setTargetHeight(largePx.height);
+                  console.log(largePx);
                 }}
               >
                 <span className="font-semibold text-[13px]">Large</span>{" "}
@@ -171,6 +175,7 @@ const DropdownButton = ({ data, img, title }) => {
                 onMouseMove={() => {
                   setTargetWidth(data.width);
                   setTargetHeight(data.height);
+                  console.log("original");
                 }}
               >
                 <span className="font-semibold text-[13px]">Original Size</span>{" "}
