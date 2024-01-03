@@ -6,13 +6,14 @@ import { responsive, categoryData } from "../../data";
 
 const Category = () => {
   return (
-    <div className=" overflow-hidden  w-[96%] mx-auto z-20">
+    <div className="mt-6 overflow-hidden  w-[97%] mx-auto z-20">
+      <h2 className="text-stone-900/60 font-semibold">Categories</h2>
       <Carousel
         draggable={true}
         responsive={responsive}
         centerMode={true}
         focusOnSelect={true}
-        className="min-h-[15rem] my-10 overflow-hidden mt-16 z-20"
+        className="mt-2 overflow-hidden z-20"
       >
         {categoryData.map((category) => {
           return (
