@@ -11,6 +11,8 @@ import classes from "./img.module.css";
 import loading from "../../assets/loding2.webp";
 import { Helmet } from "react-helmet";
 import DropdownButton from "../Buttons/DropdownButton";
+import share from "../../assets/share.png";
+import ShareDropDown from "../Buttons/ShareDropDown";
 
 const ImagePreview = ({ data }) => {
   const [img, setImg] = useState(null);
@@ -63,7 +65,7 @@ const ImagePreview = ({ data }) => {
       <div className="h-full w-full">
         {fullimg && <FullImgPrev img={img} setFullimg={setFullimg} />}
       </div>
-      <div className={`bg-[url('${img}')] w-[100%] h-[100vh] z-[40]`}>
+      <div className={`bg-[url('${img}')] bg-cover bg-center h-[103vh] z-[40]`}>
         <div
           id="overlay"
           onClick={(e) => {
@@ -172,12 +174,15 @@ const ImagePreview = ({ data }) => {
 
                 <div className="flex flex-row">
                   <button className="border border-stone-300  mr-2 px-4 rounded-md flex items-center justify-center">
-                    <img src={heart} className="w-[.9rem] h-[0.9rem]" />
+                    <img
+                      src={heart}
+                      className="w-[.9rem] h-[0.9rem] invert-[40%]"
+                    />
                   </button>
                   <div className="flex items-center justify-center w-[12rem]">
                     <button
                       onClick={() => downloadImg(img)}
-                      className="bg-stone-900 text-white w-[100%] h-[2.3rem] leading-[33px] px-4 rounded-s-md"
+                      className=" bg-black text-stone-50 w-[100%] h-[2.3rem] leading-[33px] px-4 rounded-s-md"
                     >
                       Download Free
                     </button>
@@ -191,13 +196,25 @@ const ImagePreview = ({ data }) => {
               </div>
               {/* End details  */}
             </div>
-            <div className="text-3xl">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur
-              minima quo dignissimos magni, nesciunt sed laudantium explicabo ab
-              eveniet quod illum repellat ut doloribus magnam distinctio labore
-              tempora, atque hic, laboriosam molestias et sit? A ad, molestias,
-              nulla id sint earum omnis dolorum soluta doloremque voluptate
-              corporis ducimus cum!
+            <div className="mt-2 mx-auto w-full flex justify-between">
+              <div className="basis-[76%] mt-2">
+                <h1 className="text-xl font-semibold text-stone-700">
+                  {title}
+                </h1>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Ipsum ducimus dignissimos distinctio assumenda maiores
+                  voluptatibus asperiores. Reiciendis magnam, animi ex veritatis
+                  nam facilis qui vero commodi architecto, quas sapiente quasi!
+                </p>
+              </div>
+              <div className="basis-[22%] flex justify-between">
+                <ShareDropDown />
+
+                <button className=" text-stone-600 border border-stone-300 h-[2.2rem] leading-[30px] px-4 rounded-md flex justify-center items-center font-semibold text-2xl pb-[4px]">
+                  +
+                </button>
+              </div>
             </div>
           </div>
         </div>

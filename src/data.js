@@ -98,104 +98,121 @@ export const mainData = [
 
   {
     id: 1,
-    title: "image 1",
+    title:
+      "The vibrant waters of NEOM, are home to some of the most picturesque and pristine islands in the Red Sea image 1",
     imgSrc:
       "https://images.unsplash.com/photo-1703842205119-f517a1219065?q=80&w=1884&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 2,
-    title: "image 2",
+    title:
+      "The vibrant waters of NEOM, are home to some of the most picturesque and pristine islands in the Red Sea  image 2",
     imgSrc:
       "https://images.unsplash.com/photo-1703769605314-502c031fe751?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 3,
-    title: "image 3",
+    title:
+      "The vibrant waters of NEOM, are home to some of the most picturesque and pristine islands in the Red Sea  3",
     imgSrc:
       "https://images.unsplash.com/photo-1703692218696-c9f830a81f65?q=80&w=2068&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 
   {
     id: 4,
-    title: "image 4",
+    title:
+      "The vibrant waters of NEOM, are home to some of the most picturesque and pristine islands in the Red Sea  4",
     imgSrc:
       "https://plus.unsplash.com/premium_photo-1700012852859-7591273a12e5?q=80&w=1978&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 5,
-    title: "image 5",
+    title:
+      "The vibrant waters of NEOM, are home to some of the most picturesque and pristine islands in the Red Sea  5",
     imgSrc:
       "https://images.unsplash.com/photo-1703803828769-36c110f2d4e1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 6,
-    title: "image 6",
+    title:
+      "The vibrant waters of NEOM, are home to some of the most picturesque and pristine islands in the Red Sea  6",
     imgSrc:
       "https://images.unsplash.com/photo-1703778506344-d0ae7ec21b86?q=80&w=1854&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 7,
-    title: "image 7",
+    title:
+      "The vibrant waters of NEOM, are home to some of the most picturesque and pristine islands in the Red Sea  7",
     imgSrc:
       "https://images.unsplash.com/photo-1682687220063-4742bd7fd538?q=80&w=1975&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 8,
-    title: "image 8",
+    title:
+      "The vibrant waters of NEOM, are home to some of the most picturesque and pristine islands in the Red Sea  8",
     imgSrc:
       "https://images.unsplash.com/photo-1701743804479-d4e4c525d548?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 9,
-    title: "image 9",
+    title:
+      "The vibrant waters of NEOM, are home to some of the most picturesque and pristine islands in the Red Sea  9",
     imgSrc:
       "https://images.unsplash.com/photo-1682687220067-dced9a881b56?q=80&w=1975&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 10,
-    title: "image 10",
+    title:
+      "The vibrant waters of NEOM, are home to some of the most picturesque and pristine islands in the Red Sea  10",
     imgSrc:
       "https://images.unsplash.com/photo-1682695796497-31a44224d6d6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 11,
-    title: "image 11",
+    title:
+      "The vibrant waters of NEOM, are home to some of the most picturesque and pristine islands in the Red Sea  11",
     imgSrc:
       "https://plus.unsplash.com/premium_photo-1703435537785-a38f07ff4283?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 12,
-    title: "image 12",
+    title:
+      "The vibrant waters of NEOM, are home to some of the most picturesque and pristine islands in the Red Sea  12",
     imgSrc:
       "https://images.unsplash.com/photo-1703817844004-0d0d4fc5abe4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 13,
-    title: "image 13",
+    title:
+      "The vibrant waters of NEOM, are home to some of the most picturesque and pristine islands in the Red Sea  13",
     imgSrc:
       "https://images.unsplash.com/photo-1703858951087-8c007b5aff4b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 14,
-    title: "image 14",
+    title:
+      "The vibrant waters of NEOM, are home to some of the most picturesque and pristine islands in the Red Sea  14",
     imgSrc:
       "https://images.unsplash.com/photo-1702939419460-f2bb1cbaf897?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 15,
-    title: "image 15",
+    title:
+      "The vibrant waters of NEOM, are home to some of the most picturesque and pristine islands in the Red Sea  15",
     imgSrc:
       "https://plus.unsplash.com/premium_photo-1674599003901-7794de153bbe?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 16,
-    title: "image 16",
+    title:
+      "The vibrant waters of NEOM, are home to some of the most picturesque and pristine islands in the Red Sea  16",
     imgSrc:
       "https://images.unsplash.com/photo-1703622603725-a6a102e12fbc?q=80&w=2055&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 17,
-    title: "image 17",
+    title:
+      "The vibrant waters of NEOM, are home to some of the most picturesque and pristine islands in the Red Sea  17",
     imgSrc:
       "https://images.unsplash.com/photo-1682687220566-5599dbbebf11?q=80&w=1975&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },

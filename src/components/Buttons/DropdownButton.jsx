@@ -15,6 +15,9 @@ const DropdownButton = ({ data, img, title }) => {
       if (e.target.role !== "menuitem" && e.target.type !== "button") {
         setIsOpen(false);
       }
+      if (e.target.id === "share") {
+        setIsOpen(false);
+      }
     });
   }, []);
   useEffect(() => {
@@ -90,13 +93,15 @@ const DropdownButton = ({ data, img, title }) => {
   return (
     <>
       <div className="">
-        <div className="relative inline-block text-left h-[2.3rem]">
+        <div className="relative inline-block text-left h-[2.3rem] ">
           <button
+            id="download"
             onClick={toggleDropdown}
             type="button"
-            className="border border-stone-400 inline-flex justify-center h-[2.3rem] w-full items-center min-w-10 text-sm font-medium text-white rounded-e-md "
+            className="border border-stone-300 inline-flex justify-center h-[2.3rem] w-full items-center min-w-10 text-sm font-medium text-white rounded-e-md "
           >
             <img
+              id="downImg"
               role="menuitem"
               className="w-4 h-4"
               src="https://www.iconpacks.net/icons/2/free-arrow-down-icon-3101-thumb.png"
@@ -109,7 +114,7 @@ const DropdownButton = ({ data, img, title }) => {
               isOpen
                 ? " max-h-[10.4rem] border border-gray-200"
                 : " max-h-[0rem]"
-            } absolute overflow-hidden right-0 mt-2 w-[12rem]  duration-300 origin-top-right bg-white  rounded-md shadow-2xl`}
+            } absolute overflow-hidden right-0 mt-2 w-[12rem] z-50 duration-300 origin-top-right bg-white  rounded-md shadow-2xl`}
           >
             <div
               className="py-1 "
