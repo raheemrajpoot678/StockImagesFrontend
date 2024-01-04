@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { saveAs } from "file-saver";
+import Spiner from "../Spiner/Spiner";
+import loadingimg from "../../assets/loding.gif";
 
 const DropdownButton = ({ data, img, title }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [smallPx, setSmallPx] = useState({ width: 640, height: 640 });
   const [mediumPx, setMeduimPx] = useState({ width: 1920, height: 640 });
   const [largePx, setLargePx] = useState({ width: 2400, height: 640 });
+  const [loading, setLoading] = useState(false);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -39,11 +41,6 @@ const DropdownButton = ({ data, img, title }) => {
     getPx("m");
     getPx("l");
   }, [data]);
-
-  //  reasize and Download
-  // const [resizedImageUrl, setResizedImageUrl] = useState("");
-  // const [imageUrl, setImageUrl] = useState(img);
-  // const [downloadFileName, setDownloadFileName] = useState("raheem.png");
 
   const [resizedImageUrl, setResizedImageUrl] = useState(null);
   const [targetHeight, setTargetHeight] = useState(null);
@@ -89,7 +86,7 @@ const DropdownButton = ({ data, img, title }) => {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      // saveAs(resizedImageUrl, downloadFileName);
+      setLoading(false);
     };
     targetHeight !== null && handleDownload();
   }, [resizedImageUrl]);
@@ -113,118 +110,81 @@ const DropdownButton = ({ data, img, title }) => {
             />
           </button>
 
-          <div
-            className={`${
-              isOpen
-                ? " max-h-[10.4rem] border border-gray-200"
-                : " max-h-[0rem]"
-            } absolute overflow-hidden right-0 mt-2 w-[12rem] z-50 duration-300 origin-top-right bg-white  rounded-md shadow-2xl`}
-          >
-            <div
-              className="py-1 "
-              role="menu"
-              aria-orientation="vertical"
-              aria-labelledby="options-menu"
-            >
-              <button
-                href="#"
-                className="block text-left px-4 py-[8px] w-full text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                role="menuitem"
-                // onMouseOver={() => {
-                //   setTargetWidth(smallPx.width);
-                //   setTargetHeight(smallPx.height);
-                //   console.log(smallPx);
-                // }}
-                // onMouseEnter={() => {
-                //   setTargetWidth(smallPx.width);
-                //   setTargetHeight(smallPx.height);
-                //   console.log(smallPx);
-                // }}
-
-                onClick={() => {
-                  setTargetWidth(smallPx.width);
-                  setTargetHeight(smallPx.height);
-                  // targetHeight && targetWidth == 640 && handleDownload();
-                }}
-              >
-                <span className="font-semibold text-[13px]">Small</span>{" "}
-                <span className="text-stone-500 text-[13px]">{`(${smallPx.width} x ${smallPx.height})`}</span>
-              </button>
-              <button
-                href="#"
-                className="block text-left px-4 py-[8px] text-sm w-full text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                role="menuitem"
-                // onMouseOver={() => {
-                //   setTargetWidth(mediumPx.width);
-                //   setTargetHeight(mediumPx.height);
-                //   console.log(mediumPx);
-                // }}
-                // onMouseEnter={() => {
-                //   setTargetWidth(mediumPx.width);
-                //   setTargetHeight(mediumPx.height);
-                //   console.log(mediumPx);
-                // }}
-
-                onClick={() => {
-                  setTargetWidth(mediumPx.width);
-                  setTargetHeight(mediumPx.height);
-                  // targetHeight && targetWidth == 1920 && handleDownload();
-                }}
-              >
-                <span className="font-semibold text-[13px]">Medium</span>{" "}
-                <span className="text-stone-500 text-[13px]">{`(${mediumPx.width} x ${mediumPx.height})`}</span>
-              </button>
-              <button
-                href="#"
-                className="block text-left px-4 py-[8px] text-sm w-full text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                role="menuitem"
-                // onMouseOver={() => {
-                //   setTargetWidth(largePx.width);
-                //   setTargetHeight(largePx.height);
-                //   console.log(largePx);
-                // }}
-                // onMouseEnter={() => {
-                //   setTargetWidth(largePx.width);
-                //   setTargetHeight(largePx.height);
-                //   console.log(largePx);
-                // }}
-
-                onClick={() => {
-                  setTargetWidth(largePx.width);
-                  setTargetHeight(largePx.height);
-                  // targetHeight && targetWidth == 2400 && handleDownload();
-                }}
-              >
-                <span className="font-semibold text-[13px]">Large</span>{" "}
-                <span className="text-stone-500 text-[13px]">{`(${largePx.width} x ${largePx.height})`}</span>
-              </button>
-              <button
-                href="#"
-                className="block  text-left px-4 py-4 border-t-2 border-stone-400/50 text-sm w-full text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                role="menuitem"
-                // onMouseOver={() => {
-                //   setTargetWidth(data.width);
-                //   setTargetHeight(data.height);
-                //   console.log("original");
-                // }}
-                // onMouseEnter={() => {
-                //   setTargetWidth(data.width);
-                //   setTargetHeight(data.height);
-                //   console.log("original");
-                // }}
-
-                onClick={() => {
-                  setTargetWidth(data.width);
-                  setTargetHeight(data.height);
-
-                  // targetHeight && targetWidth && handleDownload();
-                }}
-              >
-                <span className="font-semibold text-[13px]">Original Size</span>{" "}
-                <span className="text-stone-500 text-[13px]">{`(${data.width} x ${data.height})`}</span>
-              </button>
+          {loading ? (
+            <div className="absolute overflow-hidden right-0 mt-2 w-[12rem] z-50 duration-300 origin-top-right bg-white h-[5rem] flex items-center justify-center  rounded-md shadow-2xl">
+              <img src={loadingimg} className="w-6 h-6" />
             </div>
-          </div>
+          ) : (
+            <div
+              className={`${
+                isOpen
+                  ? " max-h-[10.4rem] border border-gray-200"
+                  : " max-h-[0rem]"
+              } absolute overflow-hidden right-0 mt-2 w-[12rem] z-50 duration-300 origin-top-right bg-white  rounded-md shadow-2xl`}
+            >
+              <div
+                className="py-1 "
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="options-menu"
+              >
+                <button
+                  href="#"
+                  className="block text-left px-4 py-[8px] w-full text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                  role="menuitem"
+                  onClick={() => {
+                    setLoading(true);
+                    setTargetWidth(smallPx.width);
+                    setTargetHeight(smallPx.height);
+                  }}
+                >
+                  <span className="font-semibold text-[13px]">Small</span>{" "}
+                  <span className="text-stone-500 text-[13px]">{`(${smallPx.width} x ${smallPx.height})`}</span>
+                </button>
+                <button
+                  href="#"
+                  className="block text-left px-4 py-[8px] text-sm w-full text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                  role="menuitem"
+                  onClick={() => {
+                    setLoading(true);
+                    setTargetWidth(mediumPx.width);
+                    setTargetHeight(mediumPx.height);
+                  }}
+                >
+                  <span className="font-semibold text-[13px]">Medium</span>{" "}
+                  <span className="text-stone-500 text-[13px]">{`(${mediumPx.width} x ${mediumPx.height})`}</span>
+                </button>
+                <button
+                  href="#"
+                  className="block text-left px-4 py-[8px] text-sm w-full text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                  role="menuitem"
+                  onClick={() => {
+                    setLoading(true);
+                    setTargetWidth(largePx.width);
+                    setTargetHeight(largePx.height);
+                  }}
+                >
+                  <span className="font-semibold text-[13px]">Large</span>{" "}
+                  <span className="text-stone-500 text-[13px]">{`(${largePx.width} x ${largePx.height})`}</span>
+                </button>
+                <button
+                  href="#"
+                  className="block  text-left px-4 py-4 border-t-2 border-stone-400/50 text-sm w-full text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                  role="menuitem"
+                  onClick={() => {
+                    setLoading(true);
+                    setTargetWidth(data.width);
+                    setTargetHeight(data.height);
+                  }}
+                >
+                  <span className="font-semibold text-[13px]">
+                    Original Size
+                  </span>{" "}
+                  <span className="text-stone-500 text-[13px]">{`(${data.width} x ${data.height})`}</span>
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </>
