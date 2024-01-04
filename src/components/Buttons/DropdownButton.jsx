@@ -45,11 +45,11 @@ const DropdownButton = ({ data, img, title }) => {
   // const [imageUrl, setImageUrl] = useState(img);
   // const [downloadFileName, setDownloadFileName] = useState("raheem.png");
 
-  const [resizedImageUrl, setResizedImageUrl] = useState("");
-  const [targetHeight, setTargetHeight] = useState(800);
-  const [targetWidth, setTargetWidth] = useState(1000);
+  const [resizedImageUrl, setResizedImageUrl] = useState(null);
+  const [targetHeight, setTargetHeight] = useState(null);
+  const [targetWidth, setTargetWidth] = useState(null);
   let imageUrl = img;
-  let downloadFileName = `${title}.png`;
+  let downloadFileName = `${"wqdw"}.png`;
 
   useEffect(() => {
     const resizeImage = async () => {
@@ -78,17 +78,21 @@ const DropdownButton = ({ data, img, title }) => {
         console.error("Error resizing image:", error);
       }
     };
-    resizeImage();
+    targetHeight !== null && targetWidth && resizeImage();
   }, [imageUrl, targetWidth, targetHeight]);
-  const handleDownload = () => {
-    // const link = document.createElement("a");
-    // link.href = resizedImageUrl;
-    // link.download = downloadFileName || "resized_image";
-    // document.body.appendChild(link);
-    // link.click();
-    // document.body.removeChild(link);
-    saveAs(resizedImageUrl, downloadFileName);
-  };
+  useEffect(() => {
+    const handleDownload = () => {
+      console.log("download");
+      const link = document.createElement("a");
+      link.href = resizedImageUrl;
+      link.download = downloadFileName || "resized_image";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      // saveAs(resizedImageUrl, downloadFileName);
+    };
+    targetHeight !== null && handleDownload();
+  }, [resizedImageUrl]);
 
   return (
     <>
@@ -126,13 +130,21 @@ const DropdownButton = ({ data, img, title }) => {
                 href="#"
                 className="block text-left px-4 py-[8px] w-full text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                 role="menuitem"
+                // onMouseOver={() => {
+                //   setTargetWidth(smallPx.width);
+                //   setTargetHeight(smallPx.height);
+                //   console.log(smallPx);
+                // }}
+                // onMouseEnter={() => {
+                //   setTargetWidth(smallPx.width);
+                //   setTargetHeight(smallPx.height);
+                //   console.log(smallPx);
+                // }}
+
                 onClick={() => {
-                  handleDownload();
-                }}
-                onMouseMove={() => {
                   setTargetWidth(smallPx.width);
                   setTargetHeight(smallPx.height);
-                  console.log(smallPx);
+                  // targetHeight && targetWidth == 640 && handleDownload();
                 }}
               >
                 <span className="font-semibold text-[13px]">Small</span>{" "}
@@ -142,13 +154,21 @@ const DropdownButton = ({ data, img, title }) => {
                 href="#"
                 className="block text-left px-4 py-[8px] text-sm w-full text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                 role="menuitem"
+                // onMouseOver={() => {
+                //   setTargetWidth(mediumPx.width);
+                //   setTargetHeight(mediumPx.height);
+                //   console.log(mediumPx);
+                // }}
+                // onMouseEnter={() => {
+                //   setTargetWidth(mediumPx.width);
+                //   setTargetHeight(mediumPx.height);
+                //   console.log(mediumPx);
+                // }}
+
                 onClick={() => {
-                  handleDownload();
-                }}
-                onMouseMove={() => {
                   setTargetWidth(mediumPx.width);
                   setTargetHeight(mediumPx.height);
-                  console.log(mediumPx);
+                  // targetHeight && targetWidth == 1920 && handleDownload();
                 }}
               >
                 <span className="font-semibold text-[13px]">Medium</span>{" "}
@@ -158,13 +178,21 @@ const DropdownButton = ({ data, img, title }) => {
                 href="#"
                 className="block text-left px-4 py-[8px] text-sm w-full text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                 role="menuitem"
+                // onMouseOver={() => {
+                //   setTargetWidth(largePx.width);
+                //   setTargetHeight(largePx.height);
+                //   console.log(largePx);
+                // }}
+                // onMouseEnter={() => {
+                //   setTargetWidth(largePx.width);
+                //   setTargetHeight(largePx.height);
+                //   console.log(largePx);
+                // }}
+
                 onClick={() => {
-                  handleDownload();
-                }}
-                onMouseMove={() => {
                   setTargetWidth(largePx.width);
                   setTargetHeight(largePx.height);
-                  console.log(largePx);
+                  // targetHeight && targetWidth == 2400 && handleDownload();
                 }}
               >
                 <span className="font-semibold text-[13px]">Large</span>{" "}
@@ -174,13 +202,22 @@ const DropdownButton = ({ data, img, title }) => {
                 href="#"
                 className="block  text-left px-4 py-4 border-t-2 border-stone-400/50 text-sm w-full text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                 role="menuitem"
+                // onMouseOver={() => {
+                //   setTargetWidth(data.width);
+                //   setTargetHeight(data.height);
+                //   console.log("original");
+                // }}
+                // onMouseEnter={() => {
+                //   setTargetWidth(data.width);
+                //   setTargetHeight(data.height);
+                //   console.log("original");
+                // }}
+
                 onClick={() => {
-                  handleDownload();
-                }}
-                onMouseMove={() => {
                   setTargetWidth(data.width);
                   setTargetHeight(data.height);
-                  console.log("original");
+
+                  // targetHeight && targetWidth && handleDownload();
                 }}
               >
                 <span className="font-semibold text-[13px]">Original Size</span>{" "}
