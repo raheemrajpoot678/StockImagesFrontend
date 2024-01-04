@@ -1,0 +1,5 @@
+.mainBox {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto 70vh auto;
+}

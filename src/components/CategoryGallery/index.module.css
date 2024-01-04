@@ -1,0 +1,36 @@
+.gallery {
+  column-count: 3;
+  -moz-column-count: 3;
+  -webkit-column-count: 3;
+  column-width: 32%;
+  -webkit-column-width: 32%;
+  -moz-column-width: 32%;
+  padding: 1rem 1%;
+}
+.pic {
+  margin-bottom: 1.4rem;
+  padding: 0 0.2rem;
+}
+.mainBox {
+  position: relative;
+  cursor: pointer;
+}
+.overlay {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  overflow: hidden;
+  background: linear-gradient(rgba(109, 109, 109, 0.039), rgba(0, 0, 0, 0.25));
+  position: absolute;
+  bottom: 0;
+  padding: 0 5%;
+  left: 0;
+  transition: all 0.3s;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.mainBox:hover .overlay {
+  padding: 5% 5%;
+  opacity: 1;
+}
