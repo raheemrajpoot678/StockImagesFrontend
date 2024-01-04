@@ -28,6 +28,7 @@ const MainPage = () => {
       observer.observe(refElement.current);
     }
   }, []);
+
   return (
     <section>
       <div className={`${classes.layout}`}>
