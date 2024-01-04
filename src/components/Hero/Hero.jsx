@@ -19,8 +19,8 @@ const Hero = () => {
 
   useEffect(() => {
     const getrandomImg = () => {
-      const img1Num = Math.floor(Math.random() * 7) + 1;
-      const img2Num = Math.floor(Math.random() * 7) + 1;
+      const img1Num = Math.floor(Math.random() * 8) + 1;
+      const img2Num = Math.floor(Math.random() * 8) + 1;
       console.log(img1Num, img2Num);
 
       if (img1Num === img2Num) {

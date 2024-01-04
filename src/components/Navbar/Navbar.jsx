@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import search from "../../assets/search.png";
 
 const Navbar = ({ sticky }) => {
-  // const [sticky, setSticky] = useState(false);
-
+  const [searchHistory, setSearchHistory] = useState(false);
   return (
     <>
       <nav
@@ -70,9 +69,15 @@ const Navbar = ({ sticky }) => {
               action=""
               className={` ${
                 sticky && "border border-stone-300"
-              } flex bg-gray-100 rounded-xl min-h-9`}
+              } flex relative bg-gray-100 rounded-xl min-h-9`}
             >
               <input
+                onFocus={() => {
+                  setSearchHistory(true);
+                }}
+                onBlur={() => {
+                  setSearchHistory(false);
+                }}
                 type="text"
                 placeholder="Search heigh-resulation Images"
                 className="bg-gray-100 border-none text-[.9rem] outline-none px-4 h-9 rounded-xl w-full"
@@ -80,6 +85,11 @@ const Navbar = ({ sticky }) => {
               <button className="px-5">
                 <img src={search} className={`w-4 invert-[40%]`} alt="" />
               </button>
+              {searchHistory && (
+                <div className="w-full min-h-10 absolute top-11 left-0 bg-gray-50 shadow-md border border-stone-300 py-2 px-3 rounded-md text-stone-500">
+                  Pending...
+                </div>
+              )}
             </form>
           </div>
 

@@ -37,9 +37,6 @@ const ImagePreview = ({ data }) => {
     findImg();
     console.log(window.location.href);
   }, []);
-  // useEffect(() => {
-  //   forceUpdate();
-  // }, [img]);
   const tags = [
     "Lorem",
     "ipsum",
