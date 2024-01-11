@@ -1,7 +1,8 @@
 import classes from "./hero.module.css";
 import downlaod from "../../assets/arrowSmallDown.png";
-import loding from "../../assets/loding.gif";
-import loding2 from "../../assets/loding2.webp";
+// import loding from "../../assets/loding.gif";
+// import loding2 from "../../assets/loding2.webp";
+import loader from "../../assets/loader.gif";
 import { saveAs } from "file-saver";
 import ImagePreview from "../ImagePreview/ImagePreview";
 import { useEffect, useState } from "react";
@@ -13,7 +14,7 @@ const Hero = () => {
   const [img1, setImg1] = useState({});
   const [img2, setImg2] = useState({});
   const [img, setImg] = useState("");
-  const downloadImg = (url) => {
+  const downloadImg = url => {
     saveAs(url, "unknow.png");
   };
 
@@ -26,8 +27,8 @@ const Hero = () => {
       if (img1Num === img2Num) {
         getrandomImg();
       } else {
-        const img1item = heroImg.find((item) => item.id === img1Num);
-        const img2item = heroImg.find((item) => item.id === img2Num);
+        const img1item = heroImg.find(item => item.id === img1Num);
+        const img2item = heroImg.find(item => item.id === img2Num);
         setImg1(img1item);
         setImg2(img2item);
       }
@@ -78,21 +79,18 @@ const Hero = () => {
           <Link to={`/images/${img1.id}`}>
             <div
               className={`${classes.mainBox} flex items-center justify-center w-[17rem] h-[17rem]`}
-              onClick={(e) => {
+              onClick={e => {
                 if (e.target.className !== "opacity-100") {
                   setShowimg(true);
                   setImg(img1.imgSrc);
                 }
               }}
             >
-              {img1.imgSrc ? (
-                <img
-                  className="w-[17rem] h-[17rem] rounded-md shadow-md"
-                  src={img1.imgSrc || loding2}
-                />
-              ) : (
-                <Spiner />
-              )}
+              <img
+                className="w-[17rem] h-[17rem] rounded-md shadow-md"
+                src={img1.imgSrc || loader}
+              />
+
               <div className={`${classes.overlay}`}>
                 <div className="flex items-center"></div>
                 <button
@@ -107,21 +105,18 @@ const Hero = () => {
           <Link to={`/images/${img2.id}`}>
             <div
               className={`${classes.mainBox} flex items-center justify-center w-[17rem] h-[17rem]`}
-              onClick={(e) => {
+              onClick={e => {
                 if (e.target.className !== "opacity-100") {
                   setShowimg(true);
                   setImg(img2.imgSrc);
                 }
               }}
             >
-              {img2.imgSrc ? (
-                <img
-                  className="w-[17rem] h-[17rem] rounded-md shadow-md"
-                  src={img2.imgSrc || loding2}
-                />
-              ) : (
-                <Spiner />
-              )}
+              <img
+                className="w-[17rem] h-[17rem] rounded-md shadow-md"
+                src={img2.imgSrc || loader}
+              />
+
               <div className={`${classes.overlay}`}>
                 <div className="flex items-center"></div>
                 <button

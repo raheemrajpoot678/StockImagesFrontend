@@ -1,18 +1,28 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const CategoryHero = ({ category }) => {
-  const img =
-    "https://images.unsplash.com/photo-1682687220067-dced9a881b56?q=80&w=1975&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
-  const getEditTitle = (title) => {
+  const [img, setImg] = useState("");
+  const name = useParams().category;
+  useEffect(() => {
+    const getimg = async () => {
+      const res = await fetch(
+        `https://ill-erin-blackbuck-boot.cyclic.app/api/v1//getimgbycat/${name}`
+      );
+      const data = await res.json();
+      setImg(data.img.imgUrl);
+    };
+    getimg();
+  }, [category]);
+
+  const getEditTitle = title => {
     return title
       .split("-")
-      .map((word) => word[0].toUpperCase() + word.slice(1))
+      .map(word => word[0].toUpperCase() + word.slice(1))
       .join(" ");
   };
   return (
-    <div
-      className={`w-full bg-[url('${img}')] fixed bg-cover bg-center h-[70vh]`}
-    >
+    <div className={`w-full bg-[url('${img}')] bg-cover bg-center h-[70vh]`}>
       <div className=" w-full h-full bg-gradient-to-r from-stone-900/30 to-stone-900/30 text-stone-50 flex items-center p-8">
         <div>
           <h1 className="text-[3.5rem] font-bold">{getEditTitle(category)}</h1>

@@ -4,18 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = ({ sticky }) => {
   const [searchHistory, setSearchHistory] = useState(false);
-  const navLinks = [
-    "The Holidays",
-    "Wallpapers",
-    "Nature",
-    "Architecter & Interiors",
-    "Experimental",
-    "Film",
-    "Animal",
-    "Street Photography",
-    "Birds",
-    "Premium +",
-  ];
+
   return (
     <>
       <nav
@@ -40,9 +29,9 @@ const Navbar = ({ sticky }) => {
                       ? "  duration-300 text-stone-900 font-semibold border-b-2 border-stone-300"
                       : "bg-red-500 font-thin"
                   }
-                  to="/the-holidays"
+                  to="/travel"
                 >
-                  The Holidays
+                  Travel
                 </NavLink>
               </li>
               <li className="cursor-pointer">
@@ -76,9 +65,9 @@ const Navbar = ({ sticky }) => {
                       ? "  duration-300 text-stone-900 font-semibold border-b-2 border-stone-300"
                       : "bg-red-500 font-thin"
                   }
-                  to="/architecter-interiors"
+                  to="/animals"
                 >
-                  Architecter & Interiors
+                  Animals
                 </NavLink>
               </li>
               <li className="cursor-pointer">
@@ -112,9 +101,9 @@ const Navbar = ({ sticky }) => {
                       ? "  duration-300 text-stone-900 font-semibold border-b-2 border-stone-300"
                       : "bg-red-500 font-thin"
                   }
-                  to="/animal"
+                  to="/architecter-interiors"
                 >
-                  Animal
+                  Architecter & Interiors
                 </NavLink>
               </li>
               <li className="cursor-pointer">

@@ -1,22 +1,21 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import heart from "../../assets/heart.png";
 import date from "../../assets/calendar.png";
 import location from "../../assets/location.png";
 import { saveAs } from "file-saver";
 import { useParams, useNavigate } from "react-router-dom";
-import { imgCategories } from "../../data";
 import FullImgPrev from "../FullImagePrev/FullImgPrev";
 import expandImg from "../../assets/expand.png";
 import classes from "./img.module.css";
-import loading from "../../assets/loding2.webp";
+import loading from "../../assets/loader.gif";
 import { Helmet } from "react-helmet";
 import DropdownButton from "../Buttons/DropdownButton";
-import share from "../../assets/share.png";
 import ShareDropDown from "../Buttons/ShareDropDown";
+import Spiner from "../Spiner/Spiner";
 
-const ImagePreview = ({ data }) => {
+const ImagePreview = () => {
   const [img, setImg] = useState(null);
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState("bcksdb");
   const [fullimg, setFullimg] = useState(false);
   const [currentImgData, setCurrentImgData] = useState({
     width: null,
@@ -26,10 +25,14 @@ const ImagePreview = ({ data }) => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const findImg = () => {
-    const item = data.find((item) => item.id == id);
-    setImg(item.imgSrc);
-    setTitle(item.title);
+  const findImg = async () => {
+    const res = await fetch(
+      `https://ill-erin-blackbuck-boot.cyclic.app/api/v1//getimg/${id}`
+    );
+    const item = await res.json();
+    console.log(item);
+    setImg(item.img);
+    setTitle(item.img.title);
   };
 
   useEffect(() => {
@@ -37,20 +40,8 @@ const ImagePreview = ({ data }) => {
     findImg();
     console.log(window.location.href);
   }, []);
-  const tags = [
-    "Lorem",
-    "ipsum",
-    "dolor",
-    "sit",
-    "amet",
-    "consectetur",
-    "adipisicing",
-    "Perferendis",
-    "excepturi",
-    "officia ",
-  ];
 
-  const downloadImg = (url) => {
+  const downloadImg = url => {
     saveAs(url, "unknow.png");
   };
 
@@ -60,12 +51,18 @@ const ImagePreview = ({ data }) => {
         <title>{title}</title>
       </Helmet>
       <div className="h-full w-full">
-        {fullimg && <FullImgPrev img={img} setFullimg={setFullimg} />}
+        {fullimg && (
+          <FullImgPrev img={img && img.imgUrl} setFullimg={setFullimg} />
+        )}
       </div>
-      <div className={`bg-[url('${img}')] bg-cover bg-center h-[103vh] z-[40]`}>
+      <div
+        className={`bg-[url('${
+          img && img.imgUrl
+        }')] bg-cover bg-center h-[103vh] z-[40]`}
+      >
         <div
           id="overlay"
-          onClick={(e) => {
+          onClick={e => {
             if (e.target.id === "overlay") {
               navigate(-1);
             }
@@ -94,18 +91,23 @@ const ImagePreview = ({ data }) => {
                       src={expandImg}
                     />
                   </div>
-
-                  <img
-                    onLoad={(e) => {
-                      setCurrentImgData({
-                        width: e.target.naturalWidth,
-                        height: e.target.naturalHeight,
-                      });
-                    }}
-                    onDoubleClick={() => setFullimg(true)}
-                    className="max-h-[32rem] mx-auto"
-                    src={img || loading}
-                  />
+                  {img ? (
+                    <img
+                      onLoad={e => {
+                        setCurrentImgData({
+                          width: e.target.naturalWidth,
+                          height: e.target.naturalHeight,
+                        });
+                      }}
+                      onDoubleClick={() => setFullimg(true)}
+                      className="max-h-[32rem] mx-auto"
+                      src={img && img.imgUrl}
+                    />
+                  ) : (
+                    <div className="h-[32rem] flex items-center justify-center">
+                      <Spiner />
+                    </div>
+                  )}
                 </div>
               </div>
               {/* End Image  */}
@@ -115,7 +117,7 @@ const ImagePreview = ({ data }) => {
                   <div className="flex flex-row items-center">
                     <img
                       className="w-11 h-11 rounded-3xl border border-stone-500/30"
-                      src={img}
+                      src={img && img.imgUrl}
                       alt="creater"
                     />
                     <div className="leading-[1.2]">
@@ -154,17 +156,20 @@ const ImagePreview = ({ data }) => {
                     <h4 className="font-semibold text-stone-600 mb-2 text-[14px]">
                       Categories
                     </h4>
-                    <div>
-                      {imgCategories.map((cat) => {
-                        return (
-                          <button
-                            key={cat}
-                            className="border-stone-300 py-[1px] bg-[#eee] text-[12px] text-[#555] px-2 rounded-md mr-1 mb-1"
-                          >
-                            {cat}
-                          </button>
-                        );
-                      })}
+                    <div className="mb-3">
+                      {img &&
+                        img.tags.map((cat, i) => {
+                          return i <= 15 ? (
+                            <button
+                              key={cat}
+                              className="border-stone-300 py-[1px] bg-[#eee] text-[12px] text-[#555] px-2 rounded-md mr-1 mb-1"
+                            >
+                              {cat}
+                            </button>
+                          ) : (
+                            ""
+                          );
+                        })}
                     </div>
                   </div>
                 </div>
@@ -178,14 +183,14 @@ const ImagePreview = ({ data }) => {
                   </button>
                   <div className="flex items-center justify-center w-[12rem]">
                     <button
-                      onClick={() => downloadImg(img)}
+                      onClick={() => downloadImg(img.imgUrl)}
                       className=" bg-black text-stone-50 w-[100%] h-[2.3rem] leading-[33px] px-4 rounded-s-md"
                     >
                       Download Free
                     </button>
                     <DropdownButton
                       data={currentImgData}
-                      img={img}
+                      img={img && img.imgUrl}
                       title={title}
                     />
                   </div>

@@ -1,4 +1,3 @@
-import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Card from "../Card/Card";
@@ -15,7 +14,7 @@ const Category = () => {
         focusOnSelect={true}
         className="mt-2 overflow-hidden z-20"
       >
-        {categoryData.map((category) => {
+        {categoryData.map(category => {
           return (
             <Card
               title={category.title}

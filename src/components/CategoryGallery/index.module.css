@@ -1,17 +1,11 @@
 .gallery {
-  column-count: 3;
-  -moz-column-count: 3;
-  -webkit-column-count: 3;
-  column-width: 32%;
-  -webkit-column-width: 32%;
-  -moz-column-width: 32%;
-  padding: 1rem 1%;
+  width: 97%;
+  margin: 0 auto;
+  padding-top: 2rem;
 }
-.pic {
-  margin-bottom: 1.4rem;
-  padding: 0 0.2rem;
-}
+
 .mainBox {
+  margin: 0.4rem;
   position: relative;
   cursor: pointer;
 }
