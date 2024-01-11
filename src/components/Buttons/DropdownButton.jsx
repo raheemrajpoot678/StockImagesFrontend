@@ -13,7 +13,7 @@ const DropdownButton = ({ data, img, title }) => {
     setIsOpen(!isOpen);
   };
   useEffect(() => {
-    window.addEventListener("click", (e) => {
+    window.addEventListener("click", e => {
       if (e.target.role !== "menuitem" && e.target.type !== "button") {
         setIsOpen(false);
       }
@@ -23,7 +23,7 @@ const DropdownButton = ({ data, img, title }) => {
     });
   }, []);
   useEffect(() => {
-    const getPx = (size) => {
+    const getPx = size => {
       if (size === "s") {
         const small = Math.ceil(data.height / (data.width / 640));
         setSmallPx({ width: 640, height: small });
@@ -66,7 +66,7 @@ const DropdownButton = ({ data, img, title }) => {
 
           ctx.drawImage(image, 0, 0, targetWidth, targetHeight);
 
-          canvas.toBlob((resizedBlob) => {
+          canvas.toBlob(resizedBlob => {
             const resizedUrl = URL.createObjectURL(resizedBlob);
             setResizedImageUrl(resizedUrl);
           });
@@ -99,12 +99,12 @@ const DropdownButton = ({ data, img, title }) => {
             id="download"
             onClick={toggleDropdown}
             type="button"
-            className="border border-stone-300 inline-flex justify-center h-[2.3rem] w-full items-center min-w-10 text-sm font-medium text-white rounded-e-md "
+            className="border-l border-stone-100 inline-flex justify-center w-full items-center min-w-10 text-sm font-medium text-white rounded-e-md h-[2.3rem] bg-black"
           >
             <img
               id="downImg"
               role="menuitem"
-              className="w-4 h-4"
+              className="w-4 h- invert-[100%]"
               src="https://www.iconpacks.net/icons/2/free-arrow-down-icon-3101-thumb.png"
               alt=""
             />

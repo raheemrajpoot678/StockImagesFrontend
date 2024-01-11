@@ -77,7 +77,7 @@ const Gallery = () => {
                           <p className="text-stone-100 ml-2">Unknow</p>
                         </div>
                         <button
-                          className="w-10 h-8 flex items-center justify-center shadow-xl bg-stone-900/50 backdrop-blur-xl rounded-md z-30"
+                          className="w-10 h-8 flex items-center justify-center shadow-xl bg-stone-900/80 backdrop-blur-xl rounded-md z-30"
                           onClick={() => {
                             downloadImg(item.imgUrl);
                           }}
