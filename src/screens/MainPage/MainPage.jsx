@@ -45,7 +45,7 @@ const MainPage = () => {
         <div ref={refElement} className={`${classes.gallery}`}>
           <Gallery />
         </div>
-        <div className={`${classes.footer}`}>Footer</div>
+        <div className={`${classes.footer}`}></div>
       </div>
     </section>
   );
