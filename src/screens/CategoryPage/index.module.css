@@ -1,5 +1,12 @@
 .mainBox {
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: auto 70vh auto;
+  grid-template-rows: 6rem 70vh auto;
+}
+@media screen and (max-width: 768px) {
+  .mainBox {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 5.4rem 70vh auto;
+  }
 }

@@ -13,7 +13,7 @@ const CategoryPage = () => {
   return (
     <>
       <div className={`${classes.mainBox}`}>
-        <div className="h-[6rem] z-50">
+        <div className="z-50">
           <div className="w-full fixed bg-white">
             <Navbar />
           </div>

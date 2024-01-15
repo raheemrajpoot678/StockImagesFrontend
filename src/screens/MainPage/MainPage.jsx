@@ -5,7 +5,6 @@ import classes from "./MainPage.module.css";
 import React, { useEffect, useRef } from "react";
 import Gallery from "../../components/Gallery/Gallery";
 import { useState } from "react";
-import Spiner from "../../components/Spiner/Spiner";
 
 const MainPage = () => {
   const [stickynav, setStickynav] = useState(false);

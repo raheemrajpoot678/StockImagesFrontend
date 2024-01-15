@@ -1,152 +1,94 @@
 import { useState } from "react";
 import search from "../../assets/search.png";
 import { NavLink } from "react-router-dom";
-
+import classes from "./Navbar.module.css";
+import { RiMenu3Fill } from "react-icons/ri";
 const Navbar = ({ sticky }) => {
   const [searchHistory, setSearchHistory] = useState(false);
-
+  const categoriesData = [
+    "travel",
+    "wallpapers",
+    "nature",
+    "animals",
+    "experimental",
+    "Film",
+    "architecter&interiors",
+    "street-photography",
+    "birds",
+    "premium+",
+    "premium+",
+    "premium+",
+    "premium+",
+    "premium+",
+    "premium+",
+  ];
+  // const responsive = {
+  //   superLargeDesktop: {
+  //     breakpoint: { max: 4000, min: 3000 },
+  //     items: 5,
+  //     slidesToSlide: 2,
+  //   },
+  //   desktop: {
+  //     breakpoint: { max: 3000, min: 1024 },
+  //     items: 4,
+  //     slidesToSlide: 2,
+  //   },
+  //   tablet: {
+  //     breakpoint: { max: 1024, min: 464 },
+  //     items: 2,
+  //     slidesToSlide: 2,
+  //   },
+  //   mobile: {
+  //     breakpoint: { max: 464, min: 0 },
+  //     items: 1,
+  //     slidesToSlide: 1,
+  //   },
+  // };
+  const getFormatedCategory = category => {
+    const arr = category.split("-").join(" ").split("&").join(" ");
+    const str = arr[0].toUpperCase() + arr.slice(1);
+    return str;
+  };
   return (
     <>
       <nav
-        className={` ${
+        className={`${classes.mainNav} ${
           sticky && "fixed bg-stone-50/80 text-black backdrop-blur-md shadow-xl"
         } shadow-sm border border-stone-600/5 w-full px-[4%] z-50 h-[6rem]  pb-[.5rem] duration-300`}
       >
         <div className="w-full flex  items-center">
-          <div className="basis-[12%]">
+          <div className={`${classes.logo} basis-[12%]`}>
             <h1 className="text-[1.8rem] text-stone-900 font-bold">LOGO</h1>
           </div>
-          <div className="basis-[88%]">
+          <div className="basis-[88%] overflow-hidden">
             <ul
-              className={`${
+              className={`${classes.navLinks} ${
                 sticky ? "text-black" : "text-[#767676]"
               } flex items-center justify-between w-[90%] mx-auto text-[#767676] text-[0.8rem]`}
             >
-              <li className="cursor-pointer">
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive
-                      ? "  duration-300 text-stone-900 font-semibold border-b-2 border-stone-300"
-                      : "bg-red-500 font-thin"
-                  }
-                  to="/travel"
-                >
-                  Travel
-                </NavLink>
-              </li>
-              <li className="cursor-pointer">
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive
-                      ? "  duration-300 text-stone-900 font-semibold border-b-2 border-stone-300"
-                      : "bg-red-500 font-thin"
-                  }
-                  to="/wallpapers"
-                >
-                  Wallpapers
-                </NavLink>
-              </li>
-              <li className="cursor-pointer">
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive
-                      ? "  duration-300 text-stone-900 font-semibold border-b-2 border-stone-300"
-                      : "bg-red-500 font-thin"
-                  }
-                  to="/nature"
-                >
-                  Nature
-                </NavLink>
-              </li>
-              <li className="cursor-pointer">
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive
-                      ? "  duration-300 text-stone-900 font-semibold border-b-2 border-stone-300"
-                      : "bg-red-500 font-thin"
-                  }
-                  to="/animals"
-                >
-                  Animals
-                </NavLink>
-              </li>
-              <li className="cursor-pointer">
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive
-                      ? "  duration-300 text-stone-900 font-semibold border-b-2 border-stone-300"
-                      : "bg-red-500 font-thin"
-                  }
-                  to="/experimental"
-                >
-                  Experimental
-                </NavLink>
-              </li>
-              <li className="cursor-pointer">
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive
-                      ? "  duration-300 text-stone-900 font-semibold border-b-2 border-stone-300"
-                      : "bg-red-500 font-thin"
-                  }
-                  to="/film"
-                >
-                  Film
-                </NavLink>
-              </li>
-              <li className="cursor-pointer">
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive
-                      ? "  duration-300 text-stone-900 font-semibold border-b-2 border-stone-300"
-                      : "bg-red-500 font-thin"
-                  }
-                  to="/architecter-interiors"
-                >
-                  Architecter & Interiors
-                </NavLink>
-              </li>
-              <li className="cursor-pointer">
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive
-                      ? "  duration-300 text-stone-900 font-semibold border-b-2 border-stone-300"
-                      : "bg-red-500 font-thin"
-                  }
-                  to="/street-photography"
-                >
-                  Street Photography
-                </NavLink>
-              </li>
-              <li className="cursor-pointer">
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive
-                      ? "  duration-300 text-stone-900 font-semibold border-b-2 border-stone-300"
-                      : "bg-red-500 font-thin"
-                  }
-                  to="/birds"
-                >
-                  Birds
-                </NavLink>
-              </li>
-              <li className="cursor-pointer font-semibold">
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive
-                      ? "  duration-300 text-stone-900 font-semibold border-b-2 border-stone-300"
-                      : "bg-red-500 font-thin"
-                  }
-                  to="/premium"
-                >
-                  Premium +
-                </NavLink>
-              </li>
+              {categoriesData.map(category => {
+                return (
+                  <li className="cursor-pointer ">
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive
+                          ? "  duration-300 text-stone-900 font-semibold border-b-2 border-stone-300"
+                          : "bg-red-500 font-thin"
+                      }
+                      to={`/${category}`}
+                    >
+                      {getFormatedCategory(category)}
+                    </NavLink>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>
-        <div className="flex items-center justify-between mt-[.1rem]">
-          <div className="basis-[10%]">
+        <div
+          className={`${classes.searchSec} flex items-center justify-between mt-[.1rem]`}
+        >
+          <div className={`${classes.mainnavLinks} basis-[10%]`}>
             <ul className="flex items-center justify-between text-[#5f5f5f] text-[.8rem]">
               <li>
                 <NavLink
@@ -175,7 +117,7 @@ const Navbar = ({ sticky }) => {
               </li>
             </ul>
           </div>
-          <div className="basis-[62%]">
+          <div className={`${classes.searchBar} basis-[62%]`}>
             <form
               action=""
               className={` ${
@@ -203,9 +145,13 @@ const Navbar = ({ sticky }) => {
               )}
             </form>
           </div>
-
-          <div className="basis-[20%]">
-            <div className="flex justify-end">
+          <div className={`${classes.hamburger}`}>
+            <button>
+              <RiMenu3Fill />
+            </button>
+          </div>
+          <div className={`${classes.btns} basis-[20%]`}>
+            <div className={`flex justify-end`}>
               <button
                 className={`${
                   sticky

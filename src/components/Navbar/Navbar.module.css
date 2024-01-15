@@ -1,0 +1,47 @@
+.navLinks {
+  overflow: hidden;
+}
+.navLinks li {
+  width: fit-content;
+  min-width: fit-content;
+  margin-right: 1.6rem;
+}
+@media only screen and (max-width: 767px) {
+  .logo {
+  }
+  .logo h1 {
+    font-size: 1.3rem;
+  }
+  .mainNav {
+    max-height: 5.4rem;
+  }
+  .navLinks li {
+    margin-right: 0.8rem;
+    font-size: 0.7rem;
+  }
+  .mainnavLinks {
+    display: none;
+    flex-basis: 0;
+  }
+  .searchSec {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.4rem;
+  }
+  .searchBar {
+    width: 100%;
+    flex-basis: 92%;
+  }
+  .btns {
+    display: none;
+    flex-basis: 0;
+  }
+  .hamburger {
+    flex-basis: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    font-size: 1.4rem;
+  }
+}
