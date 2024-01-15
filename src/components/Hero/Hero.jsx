@@ -3,7 +3,6 @@ import downlaod from "../../assets/arrowSmallDown.png";
 import { saveAs } from "file-saver";
 import ImagePreview from "../ImagePreview/ImagePreview";
 import { useEffect, useState } from "react";
-import { heroImg } from "../../data";
 import { Link } from "react-router-dom";
 import Spiner from "../Spiner/Spiner";
 const Hero = () => {
