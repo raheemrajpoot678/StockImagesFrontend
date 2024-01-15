@@ -55,7 +55,6 @@ const CategoryGallery = () => {
   useEffect(() => {
     setImages([]);
     setPage(1);
-    fetchMoreImages();
     setCategoryState(category);
   }, [category, categoryState]);
 

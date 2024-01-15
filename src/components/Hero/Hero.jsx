@@ -86,18 +86,27 @@ const Hero = () => {
                 }
               }}
             >
-              <img
-                className="w-[17rem] h-[17rem] rounded-md shadow-md"
-                src={img1.imgSrc || loader}
-              />
+              {img1.imgSrc ? (
+                <img
+                  className="w-[17rem] h-[17rem] rounded-md shadow-md"
+                  src={img1.imgSrc}
+                />
+              ) : (
+                <div className="scale-[.6]">
+                  <Spiner />
+                </div>
+              )}
 
               <div className={`${classes.overlay}`}>
                 <div className="flex items-center"></div>
                 <button
-                  className="w-7 h-7 bg-stone-100 backdrop-blur-xl rounded-md opacity-65 z-30"
+                  className="w-10 h-8 flex items-center justify-center shadow-xl bg-stone-900/90 backdrop-blur-xl rounded-md z-30"
                   onClick={() => downloadImg(img1.imgSrc)}
                 >
-                  <img src={downlaod} className="opacity-100" />
+                  <img
+                    src={downlaod}
+                    className="opacity-100  w-6 h-6 invert-[100%]"
+                  />
                 </button>
               </div>
             </div>
@@ -112,18 +121,27 @@ const Hero = () => {
                 }
               }}
             >
-              <img
-                className="w-[17rem] h-[17rem] rounded-md shadow-md"
-                src={img2.imgSrc || loader}
-              />
+              {img2.imgSrc ? (
+                <img
+                  className="w-[17rem] h-[17rem] rounded-md shadow-md"
+                  src={img2.imgSrc}
+                />
+              ) : (
+                <div className="scale-[.6]">
+                  <Spiner />
+                </div>
+              )}
 
               <div className={`${classes.overlay}`}>
                 <div className="flex items-center"></div>
                 <button
-                  className="w-7 h-7 bg-stone-100 backdrop-blur-xl rounded-md opacity-65 z-30"
+                  className="w-10 h-8 flex items-center justify-center shadow-xl bg-stone-900/90 backdrop-blur-xl rounded-md z-30"
                   onClick={() => downloadImg(img2.imgSrc)}
                 >
-                  <img src={downlaod} className="opacity-100" />
+                  <img
+                    src={downlaod}
+                    className="opacity-100  w-6 h-6 invert-[100%]"
+                  />
                 </button>
               </div>
             </div>
