@@ -103,7 +103,7 @@ const Hero = () => {
               </div>
             </div>
           </Link>
-          <Link to={`/images/${img2.id}`}>
+          <Link to={`/images/${img2._id}`}>
             <div
               className={`${classes.mainBox} flex items-center justify-center w-[17rem] h-[17rem]`}
               onClick={e => {
