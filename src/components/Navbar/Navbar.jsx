@@ -145,7 +145,7 @@ const Navbar = ({ sticky }) => {
               )}
             </form>
           </div>
-          <div className={`${classes.hamburger}`}>
+          <div className={`${classes.hamburger} hidden`}>
             <button>
               <RiMenu3Fill />
             </button>
