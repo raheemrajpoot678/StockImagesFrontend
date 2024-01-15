@@ -58,7 +58,7 @@ const ImagePreview = () => {
       <div
         className={`bg-[url('${
           img && img.imgUrl
-        }')] bg-cover bg-center h-[103vh] z-[40]`}
+        }')] bg-center w-[100%] min-h-[100vh] z-[40]`}
       >
         <div
           id="overlay"
@@ -100,7 +100,7 @@ const ImagePreview = () => {
                         });
                       }}
                       onDoubleClick={() => setFullimg(true)}
-                      className="max-h-[32rem] mx-auto"
+                      className="max-h-[35rem] mx-auto"
                       src={img && img.imgUrl}
                     />
                   ) : (

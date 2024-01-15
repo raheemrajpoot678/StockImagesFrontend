@@ -1,8 +1,5 @@
 import classes from "./hero.module.css";
 import downlaod from "../../assets/arrowSmallDown.png";
-// import loding from "../../assets/loding.gif";
-// import loding2 from "../../assets/loding2.webp";
-import loader from "../../assets/loader.gif";
 import { saveAs } from "file-saver";
 import ImagePreview from "../ImagePreview/ImagePreview";
 import { useEffect, useState } from "react";
@@ -11,27 +8,22 @@ import { Link } from "react-router-dom";
 import Spiner from "../Spiner/Spiner";
 const Hero = () => {
   const [showimg, setShowimg] = useState(false);
-  const [img1, setImg1] = useState({});
-  const [img2, setImg2] = useState({});
+  const [img1, setImg1] = useState("");
+  const [img2, setImg2] = useState("");
   const [img, setImg] = useState("");
   const downloadImg = url => {
     saveAs(url, "unknow.png");
   };
 
   useEffect(() => {
-    const getrandomImg = () => {
-      const img1Num = Math.floor(Math.random() * 8) + 1;
-      const img2Num = Math.floor(Math.random() * 8) + 1;
-      console.log(img1Num, img2Num);
-
-      if (img1Num === img2Num) {
-        getrandomImg();
-      } else {
-        const img1item = heroImg.find(item => item.id === img1Num);
-        const img2item = heroImg.find(item => item.id === img2Num);
-        setImg1(img1item);
-        setImg2(img2item);
-      }
+    const getrandomImg = async () => {
+      const res = await fetch(
+        "https://ill-erin-blackbuck-boot.cyclic.app/api/v1/getheroimg"
+      );
+      const data = await res.json();
+      console.log(data.img1.imgUrl);
+      setImg1(data.img1);
+      setImg2(data.img2);
     };
     getrandomImg();
   }, []);
@@ -76,20 +68,20 @@ const Hero = () => {
           </p>
         </div>
         <div className="flex items-center justify-between basis-[48%] ">
-          <Link to={`/images/${img1.id}`}>
+          <Link to={`/images/${img1._id}`}>
             <div
               className={`${classes.mainBox} flex items-center justify-center w-[17rem] h-[17rem]`}
               onClick={e => {
                 if (e.target.className !== "opacity-100") {
                   setShowimg(true);
-                  setImg(img1.imgSrc);
+                  setImg(img1.imgUrl);
                 }
               }}
             >
-              {img1.imgSrc ? (
+              {img1.imgUrl ? (
                 <img
                   className="w-[17rem] h-[17rem] rounded-md shadow-md"
-                  src={img1.imgSrc}
+                  src={img1.imgUrl}
                 />
               ) : (
                 <div className="scale-[.6]">
@@ -101,7 +93,7 @@ const Hero = () => {
                 <div className="flex items-center"></div>
                 <button
                   className="w-10 h-8 flex items-center justify-center shadow-xl bg-stone-900/90 backdrop-blur-xl rounded-md z-30"
-                  onClick={() => downloadImg(img1.imgSrc)}
+                  onClick={() => downloadImg(img1.imgUrl)}
                 >
                   <img
                     src={downlaod}
@@ -117,14 +109,14 @@ const Hero = () => {
               onClick={e => {
                 if (e.target.className !== "opacity-100") {
                   setShowimg(true);
-                  setImg(img2.imgSrc);
+                  setImg(img2.imgUrl);
                 }
               }}
             >
-              {img2.imgSrc ? (
+              {img2.imgUrl ? (
                 <img
                   className="w-[17rem] h-[17rem] rounded-md shadow-md"
-                  src={img2.imgSrc}
+                  src={img2.imgUrl}
                 />
               ) : (
                 <div className="scale-[.6]">
@@ -136,7 +128,7 @@ const Hero = () => {
                 <div className="flex items-center"></div>
                 <button
                   className="w-10 h-8 flex items-center justify-center shadow-xl bg-stone-900/90 backdrop-blur-xl rounded-md z-30"
-                  onClick={() => downloadImg(img2.imgSrc)}
+                  onClick={() => downloadImg(img2.imgUrl)}
                 >
                   <img
                     src={downlaod}
