@@ -49,6 +49,7 @@ const Navbar = ({ sticky }) => {
     const str = arr[0].toUpperCase() + arr.slice(1);
     return str;
   };
+
   return (
     <>
       <nav

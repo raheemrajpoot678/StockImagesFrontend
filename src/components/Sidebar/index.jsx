@@ -3,6 +3,7 @@ import { RiMenu3Fill } from "react-icons/ri";
 import { IoClose } from "react-icons/io5";
 import { GrFormNext } from "react-icons/gr";
 import { FaChevronDown } from "react-icons/fa6";
+import { NavLink } from "react-router-dom";
 
 const SidebarBtn = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,16 +11,12 @@ const SidebarBtn = () => {
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
+    setIsCatOpen(false);
   };
   const toggleCatDropdown = () => {
     setIsCatOpen(!isCatOpen);
   };
 
-  // useEffect(() => {
-  //   window.onscroll = function () {
-  //     setIsOpen(false);
-  //   };
-  // }, []);
   const categoriesData = [
     "travel",
     "wallpapers",
@@ -43,6 +40,7 @@ const SidebarBtn = () => {
     const str = arr[0].toUpperCase() + arr.slice(1);
     return str;
   };
+
   return (
     <div className="relative inline-block text-left w-full">
       <button
@@ -89,19 +87,32 @@ const SidebarBtn = () => {
 
           <div
             className={`${
-              isCatOpen ? "max-h-[18.4rem]" : "max-h-[0]"
+              isCatOpen ? "max-h-[18.4rem] " : "max-h-[0]"
             }  overflow-auto duration-300`}
           >
             {categoriesData.map(cat => {
               return (
                 <div key={cat}>
-                  <button
-                    href="#"
-                    className="block w-full px-4 py-2 text-sm text-gray-400 hover:bg-gray-100 hover:text-gray-900"
-                    role="menuitem"
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "  duration-300 text-stone-900 font-semibold border-b-2 border-stone-300"
+                        : "bg-red-500 font-thin"
+                    }
+                    to={`/${cat}`}
                   >
-                    {getFormatedCategory(cat)}
-                  </button>
+                    <button
+                      href="#"
+                      className="block w-full px-4 py-2 text-sm text-gray-400 hover:bg-gray-100 hover:text-gray-900"
+                      role="menuitem"
+                      onClick={() => {
+                        setIsOpen(false);
+                        setIsCatOpen(false);
+                      }}
+                    >
+                      {getFormatedCategory(cat)}
+                    </button>
+                  </NavLink>
                   <div className="border-b border-gray-200/70 w-[75%] mx-auto "></div>
                 </div>
               );
@@ -113,13 +124,22 @@ const SidebarBtn = () => {
             {mainLinks.map(link => {
               return (
                 <div key={link}>
-                  <button
-                    href="#"
-                    className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                    role="menuitem"
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "  duration-300 text-stone-900 font-semibold border-b-2 border-stone-300"
+                        : "bg-red-500 font-thin"
+                    }
+                    to={`/${link}`}
                   >
-                    {link}
-                  </button>
+                    <button
+                      href="#"
+                      className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                      role="menuitem"
+                    >
+                      {link}
+                    </button>
+                  </NavLink>
                   <div className="border-b border-gray-200/70 w-[75%] mx-auto "></div>
                 </div>
               );
