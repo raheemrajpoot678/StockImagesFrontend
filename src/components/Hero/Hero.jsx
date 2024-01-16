@@ -30,31 +30,33 @@ const Hero = () => {
     <>
       {showimg && <ImagePreview img={img} />}
       <div
-        className={` flex flex-row items-center mx-auto rounded-xl min-h-[70vh] justify-between border border-stone-200 mt-8 p-5 shadow-sm w-[98%] z-20`}
+        className={`flex flex-row flex-wrap items-center mx-auto rounded-xl min-h-[70vh] max-[600px]:min-h-[50vh] justify-between border border-stone-200 mt-8 p-5 shadow-sm w-[98%] z-20`}
       >
-        <div className="basis-[50%] h-full">
-          <h1 className="text-5xl font-semibold">Unknow.</h1>
-          <p className="text-[#797979] my-5 leading-7 text-[1.1rem]">
+        <div className="basis-[50%] h-full max-[600px]:basis-[100%]">
+          <h1 className="text-5xl font-semibold max-[600px]:text-[1.2rem]">
+            Unknow.
+          </h1>
+          <p className="text-[#797979] my-5 leading-7 text-[1.1rem] max-[600px]:text-[.8rem] max-[600px]:leading-5">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br />
             Aliquid, assumenda! mollitia beatae non ad ea quos <br />
             odio, magni accusantium minus cum eligendi. <br />
             assumenda! mollitia beatae.
           </p>
-          <p className="font-semibold mb-4  text-[#656565]">
+          <p className="font-semibold mb-4  text-[#656565] max-[600px]:text-[.8rem]">
             Doloribus unde possimus deleniti iusto quas voluptas!
           </p>
           <div className="">
             <form
               action=""
-              className="flex shadow-sm border border-stone-500/20 rounded-xl min-h-14 overflow-hidden"
+              className="flex shadow-sm border border-stone-500/20 rounded-xl h-14 max-[600px]:h-10 overflow-hidden"
             >
               <input
                 type="text"
                 placeholder={`Type here to generate Images with AI`}
-                className=" border-none text-[17px]  outline-none px-4 h-14 rounded-xl w-full"
+                className=" border-none text-[17px] max-[600px]:text-[12px]  outline-none px-4 h-14 max-[600px]:h-10 rounded-xl w-full"
               />
-              <div className="flex items-center min-h-14">
-                <button className="px-5 bg-gradient-to-r h-[45px] hover:shadow-md mr-[7px] rounded-xl shadow-sm from-cyan-500 to-blue-500 text-[white]">
+              <div className="flex items-center h-14 max-[600px]:h-10">
+                <button className="px-5 bg-gradient-to-r h-[45px] hover:shadow-md mr-[7px] rounded-xl shadow-sm from-cyan-500 to-blue-500 text-[white] max-[600px]:text-[.85rem] max-[600px]:h-[30px] max-[600px]:px-3">
                   Generate
                 </button>
               </div>
@@ -66,10 +68,10 @@ const Hero = () => {
             <span className="font-semibold">DALL·E 3</span>
           </p>
         </div>
-        <div className="flex items-center justify-between basis-[48%] ">
+        <div className="flex items-center justify-between basis-[48%] max-[600px]:basis-[100%]">
           <Link to={`/images/${img1._id}`}>
             <div
-              className={`${classes.mainBox} flex items-center justify-center w-[17rem] h-[17rem]`}
+              className={`${classes.mainBox} flex items-center justify-center w-[17rem] h-[17rem] max-[600px]:w-[8rem] max-[600px]:h-[8rem]`}
               onClick={e => {
                 if (e.target.className !== "opacity-100") {
                   setShowimg(true);
@@ -79,7 +81,7 @@ const Hero = () => {
             >
               {img1.imgUrl ? (
                 <img
-                  className="w-[17rem] h-[17rem] rounded-md shadow-md"
+                  className="w-[17rem] h-[17rem] rounded-md shadow-md max-[600px]:w-[8rem] max-[600px]:h-[8rem]"
                   src={img1.imgUrl}
                 />
               ) : (
@@ -87,7 +89,6 @@ const Hero = () => {
                   <Spiner />
                 </div>
               )}
-
               <div className={`${classes.overlay}`}>
                 <div className="flex items-center"></div>
                 <button
@@ -104,7 +105,7 @@ const Hero = () => {
           </Link>
           <Link to={`/images/${img2._id}`}>
             <div
-              className={`${classes.mainBox} flex items-center justify-center w-[17rem] h-[17rem]`}
+              className={`${classes.mainBox} flex items-center justify-center w-[17rem] h-[17rem] max-[600px]:w-[8rem] max-[600px]:h-[8rem]`}
               onClick={e => {
                 if (e.target.className !== "opacity-100") {
                   setShowimg(true);
@@ -114,7 +115,7 @@ const Hero = () => {
             >
               {img2.imgUrl ? (
                 <img
-                  className="w-[17rem] h-[17rem] rounded-md shadow-md"
+                  className="w-[17rem] h-[17rem] rounded-md shadow-md max-[600px]:w-[8rem] max-[600px]:h-[8rem]"
                   src={img2.imgUrl}
                 />
               ) : (

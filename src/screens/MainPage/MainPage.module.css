@@ -2,7 +2,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: auto 29rem 16rem auto 7rem;
+  grid-template-rows: auto auto 16rem auto 7rem;
 }
 /* .layout > div {
   border: 2px solid red;
