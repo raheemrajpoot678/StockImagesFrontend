@@ -22,11 +22,15 @@ const CategoryHero = ({ category }) => {
       .join(" ");
   };
   return (
-    <div className={`w-full bg-[url('${img}')] bg-cover bg-center h-[70vh]`}>
+    <div
+      className={`w-full bg-[url('${img}')] bg-cover bg-center h-[70vh] max-[750px]:h-[40vh]`}
+    >
       <div className=" w-full h-full bg-gradient-to-r from-stone-900/30 to-stone-900/30 text-stone-50 flex items-center p-8">
         <div>
-          <h1 className="text-[3.5rem] font-bold">{getEditTitle(category)}</h1>
-          <p className="text-[1.1rem]">
+          <h1 className="text-[3.5rem] font-bold max-[750px]:text-[2rem]">
+            {getEditTitle(category)}
+          </h1>
+          <p className="text-[1.1rem] max-[750px]:text-[.9rem] max-[750px]:leading-2">
             When the streets around you become your canvas, what can you <br />
             discover? From quiet passages in charming towns to the hustle and{" "}
             <br />

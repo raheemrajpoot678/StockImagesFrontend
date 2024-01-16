@@ -51,7 +51,9 @@ const Gallery = () => {
   return (
     <>
       <div className={`${classes.gallery}`}>
-        <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
+        <ResponsiveMasonry
+          columnsCountBreakPoints={{ 350: 2, 750: 2, 900: 3, 1600: 4 }}
+        >
           <Masonry>
             {images.map((item, i) => {
               return (

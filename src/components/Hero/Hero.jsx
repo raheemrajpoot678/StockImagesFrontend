@@ -68,10 +68,10 @@ const Hero = () => {
             <span className="font-semibold">DALL·E 3</span>
           </p>
         </div>
-        <div className="flex items-center justify-between basis-[48%] max-[600px]:basis-[100%]">
+        <div className="flex items-center max-[750px]:mt-6 justify-between basis-[48%] max-[600px]:basis-[100%]">
           <Link to={`/images/${img1._id}`}>
             <div
-              className={`${classes.mainBox} flex items-center justify-center w-[17rem] h-[17rem] max-[600px]:w-[8rem] max-[600px]:h-[8rem]`}
+              className={`${classes.mainBox} flex items-center justify-center w-[17rem] h-[17rem] max-[600px]:w-[10rem] max-[600px]:h-[10rem]`}
               onClick={e => {
                 if (e.target.className !== "opacity-100") {
                   setShowimg(true);
@@ -81,7 +81,7 @@ const Hero = () => {
             >
               {img1.imgUrl ? (
                 <img
-                  className="w-[17rem] h-[17rem] rounded-md shadow-md max-[600px]:w-[8rem] max-[600px]:h-[8rem]"
+                  className="w-[17rem] h-[17rem] rounded-md shadow-md max-[600px]:w-[10rem] max-[600px]:h-[10rem]"
                   src={img1.imgUrl}
                 />
               ) : (
@@ -105,7 +105,7 @@ const Hero = () => {
           </Link>
           <Link to={`/images/${img2._id}`}>
             <div
-              className={`${classes.mainBox} flex items-center justify-center w-[17rem] h-[17rem] max-[600px]:w-[8rem] max-[600px]:h-[8rem]`}
+              className={`${classes.mainBox} flex items-center justify-center w-[17rem] h-[17rem] max-[600px]:w-[10rem] max-[600px]:h-[10rem]`}
               onClick={e => {
                 if (e.target.className !== "opacity-100") {
                   setShowimg(true);
@@ -115,7 +115,7 @@ const Hero = () => {
             >
               {img2.imgUrl ? (
                 <img
-                  className="w-[17rem] h-[17rem] rounded-md shadow-md max-[600px]:w-[8rem] max-[600px]:h-[8rem]"
+                  className="w-[17rem] h-[17rem] rounded-md shadow-md max-[600px]:w-[10rem] max-[600px]:h-[10rem] "
                   src={img2.imgUrl}
                 />
               ) : (

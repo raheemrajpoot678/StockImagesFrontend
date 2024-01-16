@@ -61,7 +61,7 @@ const CategoryGallery = () => {
   return (
     <>
       <div className={`${classes.gallery}`}>
-        <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
+        <ResponsiveMasonry columnsCountBreakPoints={{ 350: 2, 750: 2, 900: 3 }}>
           <Masonry>
             {images.map((item, i) => {
               return (
@@ -110,7 +110,6 @@ const CategoryGallery = () => {
             className="w-full flex items-center justify-center"
             ref={elementRef}
           >
-            {/* <img className="w-[190px] h-[190px]" src={loading} /> */}
             <Spiner />
           </div>
         )}
