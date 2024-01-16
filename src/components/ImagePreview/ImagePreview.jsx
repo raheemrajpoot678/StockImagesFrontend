@@ -27,7 +27,7 @@ const ImagePreview = () => {
 
   const findImg = async () => {
     const res = await fetch(
-      `https://ill-erin-blackbuck-boot.cyclic.app/api/v1//getimg/${id}`
+      `https://jade-fierce-katydid.cyclic.app/api/v1//getimg/${id}`
     );
     const item = await res.json();
     console.log(item);

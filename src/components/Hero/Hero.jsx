@@ -17,7 +17,7 @@ const Hero = () => {
   useEffect(() => {
     const getrandomImg = async () => {
       const res = await fetch(
-        "https://ill-erin-blackbuck-boot.cyclic.app/api/v1/getheroimg"
+        "https://jade-fierce-katydid.cyclic.app/api/v1/getheroimg"
       );
       const data = await res.json();
       console.log(data.img1.imgUrl);

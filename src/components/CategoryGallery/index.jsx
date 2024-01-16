@@ -42,7 +42,7 @@ const CategoryGallery = () => {
   }, [images]);
   async function fetchMoreImages() {
     const res = await fetch(
-      `https://ill-erin-blackbuck-boot.cyclic.app/api/v1//imagesbycategory/${category}/${page}`
+      `https://jade-fierce-katydid.cyclic.app/api/v1//imagesbycategory/${category}/${page}`
     );
     const data = await res.json();
     if (data.length == 0) {

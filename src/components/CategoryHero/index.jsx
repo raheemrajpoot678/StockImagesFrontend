@@ -7,7 +7,7 @@ const CategoryHero = ({ category }) => {
   useEffect(() => {
     const getimg = async () => {
       const res = await fetch(
-        `https://ill-erin-blackbuck-boot.cyclic.app/api/v1//getimgbycat/${name}`
+        `https://jade-fierce-katydid.cyclic.app/api/v1//getimgbycat/${name}`
       );
       const data = await res.json();
       setImg(data.img.imgUrl);
