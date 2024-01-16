@@ -118,7 +118,7 @@ const Navbar = ({ sticky }) => {
             </ul>
           </div>
           <div
-            className={`${classes.searchBar} basis-[62%] w-full max-[600px]:basis-[92%]`}
+            className={`${classes.searchBar} basis-[62%] w-full max-[750px]:basis-[92%]`}
           >
             <form
               action=""
@@ -148,7 +148,7 @@ const Navbar = ({ sticky }) => {
             </form>
           </div>
           <div
-            className={`${classes.hamburger} hidden max-[600px]:block max-[600px]:basis-[5%] max-[600px]:flex items-center justify-end text-[1.4rem]`}
+            className={`${classes.hamburger} hidden max-[750px]:block max-[750px]:basis-[5%] max-[750px]:flex items-center justify-end text-[1.4rem]`}
           >
             <button>
               <RiMenu3Fill />
