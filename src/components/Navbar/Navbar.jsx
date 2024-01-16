@@ -117,7 +117,9 @@ const Navbar = ({ sticky }) => {
               </li>
             </ul>
           </div>
-          <div className={`${classes.searchBar} basis-[62%]`}>
+          <div
+            className={`${classes.searchBar} basis-[62%] w-full max-[600px]:basis-[95%]`}
+          >
             <form
               action=""
               className={` ${
