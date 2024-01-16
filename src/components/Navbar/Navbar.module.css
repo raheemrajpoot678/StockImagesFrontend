@@ -6,9 +6,8 @@
   min-width: fit-content;
   margin-right: 1.6rem;
 }
+
 @media only screen and (max-width: 767px) {
-  .logo {
-  }
   .logo h1 {
     font-size: 1.3rem;
   }
@@ -37,11 +36,11 @@
     display: none;
     flex-basis: 0;
   }
-  .hamburger {
+  /* .hamburger {
     flex-basis: 5%;
     display: flex;
     align-items: center;
     justify-content: end;
     font-size: 1.4rem;
-  }
+  } */
 }
