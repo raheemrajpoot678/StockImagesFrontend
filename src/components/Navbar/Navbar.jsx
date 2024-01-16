@@ -2,7 +2,7 @@ import { useState } from "react";
 import search from "../../assets/search.png";
 import { NavLink } from "react-router-dom";
 import classes from "./Navbar.module.css";
-import { RiMenu3Fill } from "react-icons/ri";
+import SidebarBtn from "../Sidebar/index";
 const Navbar = ({ sticky }) => {
   const [searchHistory, setSearchHistory] = useState(false);
   const categoriesData = [
@@ -95,7 +95,7 @@ const Navbar = ({ sticky }) => {
                   className={({ isActive }) =>
                     isActive
                       ? "  duration-300 text-stone-900 font-semibold border-b-2 border-stone-300"
-                      : "bg-red-500 font-thin"
+                      : "bg-red-500 font-thin mr-2"
                   }
                   to="/"
                 >
@@ -151,7 +151,7 @@ const Navbar = ({ sticky }) => {
             className={`${classes.hamburger} hidden max-[750px]:block max-[750px]:basis-[5%] max-[750px]:flex items-center justify-end text-[1.4rem]`}
           >
             <button>
-              <RiMenu3Fill />
+              <SidebarBtn />
             </button>
           </div>
           <div className={`${classes.btns} basis-[20%]`}>
