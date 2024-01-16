@@ -36,11 +36,11 @@
     display: none;
     flex-basis: 0;
   }
-  /* .hamburger {
+  .hamburger {
     flex-basis: 5%;
     display: flex;
     align-items: center;
     justify-content: end;
     font-size: 1.4rem;
-  } */
+  }
 }
