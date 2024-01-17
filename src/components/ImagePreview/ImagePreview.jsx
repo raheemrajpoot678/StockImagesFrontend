@@ -22,6 +22,7 @@ const ImagePreview = () => {
     width: null,
     height: null,
   });
+  const [nav, setNav] = useState(0);
 
   const navigate = useNavigate();
   const { id } = useParams();
@@ -40,6 +41,7 @@ const ImagePreview = () => {
     setImg(null);
     window.scrollTo(0, 0);
     findImg();
+    setNav(nav => nav + 1);
   }, [id]);
 
   const downloadImg = url => {
@@ -65,19 +67,28 @@ const ImagePreview = () => {
           id="overlay"
           onClick={e => {
             if (e.target.id === "overlay") {
-              navigate(-1);
+              navigate(-nav);
+              setNav(prevnav => prevnav - 1);
             }
           }}
           className="min-w-[100%] bg-gradient-to-r from-stone-600/30 to-stone-600/30 backdrop-blur-xl min-h-[100%] absolute top-0 right-0 z-40"
         >
           <button
             className="text-[1.2rem] font-bold ml-5 mt-1 text-stone-100"
-            onClick={() => navigate(-1)}
+            onClick={() => {
+              navigate(-nav);
+              setNav(prevnav => prevnav - 1);
+            }}
           >
             ✕
           </button>
           <div
-            className={`${classes.previewSec} bg-white w-[90%] max-[750px]:w-[95%]  mx-auto min-h-[100vh] rounded-md pb-10 mb-10 shadow-xl`}
+            onLoad={e => {
+              console.log(e);
+            }}
+            className={`${classes.previewSec} ${
+              fullimg && "hidden"
+            } max-[750px]:mt-2 bg-white w-[90%] max-[750px]:w-[95%]  mx-auto min-h-[100vh] rounded-md pb-10 mb-10 shadow-xl`}
           >
             <div className="flex flex-wrap justify-between p-8 max-[750px]:p-3">
               {/* Image  */}
@@ -224,7 +235,7 @@ const ImagePreview = () => {
             <h1 className="text-2xl mt-6 px-8 max-[750px]:px-3">
               Related Images
             </h1>
-            <RelatedGallery category={category} />
+            <RelatedGallery category={category} setNav={setNav} />
           </div>
         </div>
       </div>
