@@ -11,11 +11,13 @@ import { Helmet } from "react-helmet";
 import DropdownButton from "../Buttons/DropdownButton";
 import ShareDropDown from "../Buttons/ShareDropDown";
 import Spiner from "../Spiner/Spiner";
+import RelatedGallery from "../RelatedGallery/index";
 
 const ImagePreview = () => {
   const [img, setImg] = useState(null);
   const [title, setTitle] = useState("bcksdb");
   const [fullimg, setFullimg] = useState(false);
+  const [category, setCategory] = useState("");
   const [currentImgData, setCurrentImgData] = useState({
     width: null,
     height: null,
@@ -29,16 +31,16 @@ const ImagePreview = () => {
       `https://jade-fierce-katydid.cyclic.app/api/v1//getimg/${id}`
     );
     const item = await res.json();
-    console.log(item);
+    setCategory(item.img.category);
     setImg(item.img);
     setTitle(item.img.title);
   };
 
   useEffect(() => {
+    setImg(null);
     window.scrollTo(0, 0);
     findImg();
-    console.log(window.location.href);
-  }, []);
+  }, [id]);
 
   const downloadImg = url => {
     saveAs(url, "unknow.png");
@@ -217,6 +219,8 @@ const ImagePreview = () => {
                 </button>
               </div>
             </div>
+            <h1 className="text-2xl mt-6">Related Images</h1>
+            <RelatedGallery category={category} />
           </div>
         </div>
       </div>
