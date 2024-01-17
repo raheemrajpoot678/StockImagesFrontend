@@ -1,6 +1,6 @@
 import { useState } from "react";
 import search from "../../assets/search.png";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import classes from "./Navbar.module.css";
 import SidebarBtn from "../Sidebar/index";
 const Navbar = ({ sticky }) => {
@@ -17,28 +17,8 @@ const Navbar = ({ sticky }) => {
     "birds",
     "premium+",
   ];
-  // const responsive = {
-  //   superLargeDesktop: {
-  //     breakpoint: { max: 4000, min: 3000 },
-  //     items: 5,
-  //     slidesToSlide: 2,
-  //   },
-  //   desktop: {
-  //     breakpoint: { max: 3000, min: 1024 },
-  //     items: 4,
-  //     slidesToSlide: 2,
-  //   },
-  //   tablet: {
-  //     breakpoint: { max: 1024, min: 464 },
-  //     items: 2,
-  //     slidesToSlide: 2,
-  //   },
-  //   mobile: {
-  //     breakpoint: { max: 464, min: 0 },
-  //     items: 1,
-  //     slidesToSlide: 1,
-  //   },
-  // };
+
+  console.log([...a]);
   const getFormatedCategory = category => {
     const arr = category.split("-").join(" ").split("&").join(" ");
     const str = arr[0].toUpperCase() + arr.slice(1);
@@ -53,9 +33,12 @@ const Navbar = ({ sticky }) => {
         } shadow-sm border border-stone-600/5 w-full px-[4%] z-50 h-[6rem]  pb-[.5rem] duration-300`}
       >
         <div className="w-full flex  items-center">
-          <div className={`${classes.logo} basis-[12%]`}>
-            <h1 className="text-[1.8rem] text-stone-900 font-bold">LOGO</h1>
-          </div>
+          <Link to="/">
+            <div className={`${classes.logo} basis-[12%]`}>
+              <h1 className="text-[1.8rem] text-stone-900 font-bold">LOGO</h1>
+            </div>
+          </Link>
+
           <div className="basis-[88%] overflow-hidden">
             <ul
               className={`${classes.navLinks} ${
