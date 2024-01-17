@@ -5,7 +5,7 @@ import classes from "./Navbar.module.css";
 import SidebarBtn from "../Sidebar/index";
 const Navbar = ({ sticky }) => {
   const [searchHistory, setSearchHistory] = useState(false);
-  // const [keyWords, setKeyWords] = useState([]);
+  const [keyWords, setKeyWords] = useState([]);
   const [keyData, setKeyData] = useState([]);
   const categoriesData = [
     "travel",
@@ -26,14 +26,14 @@ const Navbar = ({ sticky }) => {
     return str;
   };
 
-  // const getKeywords = async () => {
-  //   const res = await fetch("http://127.0.0.1:8080/api/v1/getinputwords");
-  //   const data = await res.json();
-  //   setKeyWords(data.keyWords);
-  // };
-  // useEffect(() => {
-  //   getKeywords();
-  // }, []);
+  const getKeywords = async () => {
+    const res = await fetch("http://127.0.0.1:8080/api/v1/getinputwords");
+    const data = await res.json();
+    setKeyWords(data.keyWords);
+  };
+  useEffect(() => {
+    getKeywords();
+  }, []);
 
   // input.addEventListener("keyup", function (e) {
   //   removeItems();
@@ -140,6 +140,23 @@ const Navbar = ({ sticky }) => {
                 }}
                 onBlur={() => {
                   setSearchHistory(false);
+                }}
+                onKeyUp={e => {
+                  for (i of keyWords) {
+                    if (
+                      i
+                        .toLowerCase()
+                        .startsWith(e.target.value.toLowerCase()) &&
+                      e.target.value !== ""
+                    ) {
+                      const word = `<li onclick='setItem("${i}")'><b>${i.substr(
+                        0,
+                        e.target.value.length
+                      )}</b>${i.substr(e.target.value.length)}</li> `;
+                      setKeyData(d => [...d, word]);
+                      console.log(keyData);
+                    }
+                  }
                 }}
                 type="text"
                 placeholder="Search heigh-resulation Images"
