@@ -72,21 +72,23 @@ const Gallery = () => {
                       <div className={`${classes.overlay}`}>
                         <div className="flex items-center">
                           <img
-                            className="w-9 h-9 rounded-3xl border-2 border-stone-100/30"
+                            className="w-9 h-9 max-[750px]:w-6 max-[750px]:h-6 rounded-3xl border-2 border-stone-100/30"
                             src={item.imgUrl || loading}
                             alt="creater"
                           />
-                          <p className="text-stone-100 ml-2">Unknow</p>
+                          <p className="text-stone-100 ml-2 max-[750px]:text-[.8rem]">
+                            Unknow
+                          </p>
                         </div>
                         <button
-                          className="w-10 h-8 flex items-center justify-center shadow-xl bg-stone-900/90 backdrop-blur-xl rounded-md z-30"
+                          className="w-10 h-8 max-[750px]:w-6 max-[750px]:h-5 flex items-center justify-center shadow-xl bg-stone-900/90 backdrop-blur-xl rounded-md z-30"
                           onClick={() => {
                             downloadImg(item.imgUrl);
                           }}
                         >
                           <img
                             src={downlaod}
-                            className="opacity-100 w-6 h-6 invert-[100%]"
+                            className="opacity-100 w-6 h-6 max-[750px]:w-5 max-[750px]:h-4 invert-[100%]"
                           />
                         </button>
                       </div>

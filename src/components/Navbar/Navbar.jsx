@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import search from "../../assets/search.png";
 import { Link, NavLink } from "react-router-dom";
 import classes from "./Navbar.module.css";
 import SidebarBtn from "../Sidebar/index";
 const Navbar = ({ sticky }) => {
   const [searchHistory, setSearchHistory] = useState(false);
+  // const [keyWords, setKeyWords] = useState([]);
+  const [keyData, setKeyData] = useState([]);
   const categoriesData = [
     "travel",
     "wallpapers",
@@ -18,13 +20,40 @@ const Navbar = ({ sticky }) => {
     "premium+",
   ];
 
-  console.log([...a]);
   const getFormatedCategory = category => {
     const arr = category.split("-").join(" ").split("&").join(" ");
     const str = arr[0].toUpperCase() + arr.slice(1);
     return str;
   };
 
+  // const getKeywords = async () => {
+  //   const res = await fetch("http://127.0.0.1:8080/api/v1/getinputwords");
+  //   const data = await res.json();
+  //   setKeyWords(data.keyWords);
+  // };
+  // useEffect(() => {
+  //   getKeywords();
+  // }, []);
+
+  // input.addEventListener("keyup", function (e) {
+  //   removeItems();
+  //   for (i of new Set(suggestion)) {
+  //     if (
+  //       i.toLowerCase().startsWith(input.value.toLowerCase()) &&
+  //       input.value !== ""
+  //     ) {
+  //       list.style.display = "block";
+
+  //       const word = `<li onclick='setItem("${i}")'><b>${i.substr(
+  //         0,
+  //         input.value.length
+  //       )}</b>${i.substr(input.value.length)}</li> `;
+  //       list.insertAdjacentHTML("beforeend", word);
+  //     }
+  //   }
+  // });
+
+  console.log(keyWords);
   return (
     <>
       <nav
@@ -121,7 +150,7 @@ const Navbar = ({ sticky }) => {
               </button>
               {searchHistory && (
                 <div className="w-full min-h-[10rem] z-50 absolute top-11 left-0 bg-gray-50 backdrop-blur-md shadow-md border border-stone-300 py-2 px-3 rounded-md text-stone-500">
-                  Pending...
+                  {keyData.map(item => item)}
                 </div>
               )}
             </form>
