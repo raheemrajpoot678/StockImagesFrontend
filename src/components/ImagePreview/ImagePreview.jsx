@@ -83,14 +83,11 @@ const ImagePreview = () => {
             ✕
           </button>
           <div
-            onLoad={e => {
-              console.log(e);
-            }}
             className={`${classes.previewSec} ${
               fullimg && "hidden"
             } max-[750px]:mt-2 bg-white w-[90%] max-[750px]:w-[95%]  mx-auto min-h-[100vh] rounded-md pb-10 mb-10 shadow-xl`}
           >
-            <div className="flex flex-wrap justify-between p-8 max-[750px]:p-3">
+            <div className="flex flex-wrap justify-between px-8 pt-8 pb-2 max-[750px]:p-3">
               {/* Image  */}
               <div className="basis-[76%] max-[750px]:basis-[100%] max-[750px]:mb-4">
                 <div
@@ -212,7 +209,7 @@ const ImagePreview = () => {
               </div>
               {/* End details  */}
             </div>
-            <div className="mt-2 max-[750px]:mt-0 mx-auto w-full flex flex-wrap-reverse justify-between px-8 max-[750px]:px-3">
+            <div className=" max-[750px]:mt-0 mx-auto w-full flex flex-wrap-reverse justify-between px-8 max-[750px]:px-3">
               <div className="basis-[76%] mt-2 max-[750px]:basis-[100%]">
                 <h1 className="text-xl font-semibold text-stone-700">
                   {title}
@@ -235,7 +232,7 @@ const ImagePreview = () => {
             <h1 className="text-2xl mt-6 px-8 max-[750px]:px-3">
               Related Images
             </h1>
-            <RelatedGallery category={category} setNav={setNav} />
+            <RelatedGallery category={category} />
           </div>
         </div>
       </div>
