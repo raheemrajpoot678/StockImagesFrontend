@@ -7,7 +7,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import FullImgPrev from "../FullImagePrev/FullImgPrev";
 import expandImg from "../../assets/expand.png";
 import classes from "./img.module.css";
-import loading from "../../assets/loader.gif";
 import { Helmet } from "react-helmet";
 import DropdownButton from "../Buttons/DropdownButton";
 import ShareDropDown from "../Buttons/ShareDropDown";
@@ -76,9 +75,9 @@ const ImagePreview = () => {
             ✕
           </button>
           <div className="bg-white w-[90%]  p-8 mx-auto min-h-[100vh] rounded-md pb-10 mb-10 shadow-xl">
-            <div className="flex justify-between">
+            <div className="flex flex-wrap justify-between">
               {/* Image  */}
-              <div className="basis-[76%]">
+              <div className="basis-[76%] max-[750px]:basis-[100%] max-[750px]:mb-4">
                 <div
                   className={`${classes.mainimg} relative w-fit mx-auto duration-300`}
                 >
@@ -174,14 +173,14 @@ const ImagePreview = () => {
                   </div>
                 </div>
 
-                <div className="flex flex-row">
+                <div className="flex flex-row ">
                   <button className="border border-stone-300  mr-2 px-4 rounded-md flex items-center justify-center">
                     <img
                       src={heart}
                       className="w-[.9rem] h-[0.9rem] invert-[40%]"
                     />
                   </button>
-                  <div className="flex items-center justify-center w-[12rem]">
+                  <div className="flex items-center justify-center w-[12rem] ">
                     <button
                       onClick={() => downloadImg(img.imgUrl)}
                       className=" bg-black text-stone-50 w-[100%] h-[2.3rem] leading-[33px] px-4 rounded-s-md"
@@ -198,8 +197,8 @@ const ImagePreview = () => {
               </div>
               {/* End details  */}
             </div>
-            <div className="mt-2 mx-auto w-full flex justify-between">
-              <div className="basis-[76%] mt-2">
+            <div className="mt-2 mx-auto w-full flex flex-wrap-reverse justify-between">
+              <div className="basis-[76%] mt-2 max-[750px]:basis-[100%]">
                 <h1 className="text-xl font-semibold text-stone-700">
                   {title}
                 </h1>
@@ -210,7 +209,7 @@ const ImagePreview = () => {
                   nam facilis qui vero commodi architecto, quas sapiente quasi!
                 </p>
               </div>
-              <div className="basis-[22%] flex justify-between">
+              <div className="basis-[22%] flex justify-between max-[750px]:basis-[81%]">
                 <ShareDropDown />
 
                 <button className=" text-stone-600 border border-stone-300 h-[2.2rem] leading-[30px] px-4 rounded-md flex justify-center items-center font-semibold text-2xl pb-[4px]">
