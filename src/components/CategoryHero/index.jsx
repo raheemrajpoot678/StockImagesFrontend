@@ -11,6 +11,7 @@ const CategoryHero = ({ category }) => {
       );
       const data = await res.json();
       setImg(data.img.imgUrl);
+      console.log(data.img.imgUrl);
     };
     getimg();
   }, [category]);
@@ -23,7 +24,7 @@ const CategoryHero = ({ category }) => {
   };
   return (
     <div
-      className={`w-full bg-[url('${img}')] bg-cover bg-center h-[70vh] max-[750px]:h-[40vh]`}
+      className={`w-full bg-[url(${img})] bg-cover bg-center h-[70vh] max-[750px]:h-[40vh]`}
     >
       <div className=" w-full h-full bg-gradient-to-r from-stone-900/30 to-stone-900/30 text-stone-50 flex items-center p-8">
         <div>

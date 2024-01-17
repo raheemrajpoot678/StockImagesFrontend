@@ -16,11 +16,6 @@ const Navbar = ({ sticky }) => {
     "street-photography",
     "birds",
     "premium+",
-    "premium+",
-    "premium+",
-    "premium+",
-    "premium+",
-    "premium+",
   ];
   // const responsive = {
   //   superLargeDesktop: {
@@ -69,7 +64,7 @@ const Navbar = ({ sticky }) => {
             >
               {categoriesData.map(category => {
                 return (
-                  <li className="cursor-pointer ">
+                  <li className="cursor-pointer " key={category}>
                     <NavLink
                       className={({ isActive }) =>
                         isActive
@@ -149,11 +144,12 @@ const Navbar = ({ sticky }) => {
             </form>
           </div>
           <div
-            className={`${classes.hamburger} hidden max-[750px]:block max-[750px]:basis-[5%] max-[750px]:flex items-center justify-end text-[1.4rem]`}
+            className={`${classes.hamburger} relative hidden max-[750px]:basis-[5%] max-[750px]:flex items-center justify-end text-[1.4rem]`}
           >
             <button>
               <SidebarBtn />
             </button>
+            {/* <div className="absolute top-0 left-0 w-full h-full hamburger"></div> */}
           </div>
           <div className={`${classes.btns} basis-[20%]`}>
             <div className={`flex justify-end`}>

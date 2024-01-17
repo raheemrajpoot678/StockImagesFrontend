@@ -41,6 +41,18 @@ const SidebarBtn = () => {
     return str;
   };
 
+  useEffect(() => {
+    // window.onclick = e => {
+    //   if (e.target.getAttribute("fill") !== "currentColor") {
+    //     setIsOpen(false);
+    //     setIsCatOpen(false);
+    //   }
+    // };
+    window.onscroll = e => {
+      setIsOpen(false);
+      setIsCatOpen(false);
+    };
+  }, []);
   return (
     <div className="relative inline-block text-left w-full">
       <button

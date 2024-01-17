@@ -39,7 +39,7 @@ const CategoryGallery = () => {
         observer.disconnect();
       }
     };
-  }, [images]);
+  }, [images, category]);
   async function fetchMoreImages() {
     const res = await fetch(
       `https://jade-fierce-katydid.cyclic.app/api/v1//imagesbycategory/${category}/${page}`
