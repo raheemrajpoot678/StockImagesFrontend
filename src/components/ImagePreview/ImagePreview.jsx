@@ -76,8 +76,10 @@ const ImagePreview = () => {
           >
             ✕
           </button>
-          <div className="bg-white w-[90%]  p-8 mx-auto min-h-[100vh] rounded-md pb-10 mb-10 shadow-xl">
-            <div className="flex flex-wrap justify-between">
+          <div
+            className={`${classes.previewSec} bg-white w-[90%] max-[750px]:w-[95%]  mx-auto min-h-[100vh] rounded-md pb-10 mb-10 shadow-xl`}
+          >
+            <div className="flex flex-wrap justify-between p-8 max-[750px]:p-3">
               {/* Image  */}
               <div className="basis-[76%] max-[750px]:basis-[100%] max-[750px]:mb-4">
                 <div
@@ -113,7 +115,7 @@ const ImagePreview = () => {
               </div>
               {/* End Image  */}
               {/* Details  */}
-              <div className="basis-[22%] flex flex-col justify-between ">
+              <div className="basis-[22%] flex flex-col justify-between  ">
                 <div>
                   <div className="flex flex-row items-center">
                     <img
@@ -199,7 +201,7 @@ const ImagePreview = () => {
               </div>
               {/* End details  */}
             </div>
-            <div className="mt-2 mx-auto w-full flex flex-wrap-reverse justify-between">
+            <div className="mt-2 max-[750px]:mt-0 mx-auto w-full flex flex-wrap-reverse justify-between px-8 max-[750px]:px-3">
               <div className="basis-[76%] mt-2 max-[750px]:basis-[100%]">
                 <h1 className="text-xl font-semibold text-stone-700">
                   {title}
@@ -219,7 +221,9 @@ const ImagePreview = () => {
                 </button>
               </div>
             </div>
-            <h1 className="text-2xl mt-6">Related Images</h1>
+            <h1 className="text-2xl mt-6 px-8 max-[750px]:px-3">
+              Related Images
+            </h1>
             <RelatedGallery category={category} />
           </div>
         </div>
