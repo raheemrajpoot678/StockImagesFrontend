@@ -6,7 +6,6 @@ import SidebarBtn from "../Sidebar/index";
 const Navbar = ({ sticky }) => {
   const [searchHistory, setSearchHistory] = useState(false);
   const [keyWords, setKeyWords] = useState([]);
-  const [keyData, setKeyData] = useState([]);
   const categoriesData = [
     "travel",
     "wallpapers",
@@ -35,24 +34,6 @@ const Navbar = ({ sticky }) => {
     getKeywords();
   }, []);
 
-  // input.addEventListener("keyup", function (e) {
-  //   removeItems();
-  //   for (i of new Set(suggestion)) {
-  //     if (
-  //       i.toLowerCase().startsWith(input.value.toLowerCase()) &&
-  //       input.value !== ""
-  //     ) {
-  //       list.style.display = "block";
-
-  //       const word = `<li onclick='setItem("${i}")'><b>${i.substr(
-  //         0,
-  //         input.value.length
-  //       )}</b>${i.substr(input.value.length)}</li> `;
-  //       list.insertAdjacentHTML("beforeend", word);
-  //     }
-  //   }
-  // });
-
   console.log(keyWords);
   return (
     <>
@@ -61,7 +42,7 @@ const Navbar = ({ sticky }) => {
           sticky && "fixed bg-stone-50/80 text-black backdrop-blur-md shadow-xl"
         } shadow-sm border border-stone-600/5 w-full px-[4%] z-50 h-[6rem]  pb-[.5rem] duration-300`}
       >
-        <div className="w-full flex  items-center">
+        <div className="w-full flex  items-center justify-between">
           <Link to="/">
             <div className={`${classes.logo} basis-[12%]`}>
               <h1 className="text-[1.8rem] text-stone-900 font-bold">LOGO</h1>
@@ -141,23 +122,6 @@ const Navbar = ({ sticky }) => {
                 onBlur={() => {
                   setSearchHistory(false);
                 }}
-                onKeyUp={e => {
-                  for (i of keyWords) {
-                    if (
-                      i
-                        .toLowerCase()
-                        .startsWith(e.target.value.toLowerCase()) &&
-                      e.target.value !== ""
-                    ) {
-                      const word = `<li onclick='setItem("${i}")'><b>${i.substr(
-                        0,
-                        e.target.value.length
-                      )}</b>${i.substr(e.target.value.length)}</li> `;
-                      setKeyData(d => [...d, word]);
-                      console.log(keyData);
-                    }
-                  }
-                }}
                 type="text"
                 placeholder="Search heigh-resulation Images"
                 className="bg-gray-100 border-none text-[.9rem] outline-none px-4 h-9 rounded-xl w-full"
@@ -167,7 +131,7 @@ const Navbar = ({ sticky }) => {
               </button>
               {searchHistory && (
                 <div className="w-full min-h-[10rem] z-50 absolute top-11 left-0 bg-gray-50 backdrop-blur-md shadow-md border border-stone-300 py-2 px-3 rounded-md text-stone-500">
-                  {keyData.map(item => item)}
+                  <h1>Panding</h1>
                 </div>
               )}
             </form>
