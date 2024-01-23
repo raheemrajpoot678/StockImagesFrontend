@@ -3,8 +3,8 @@ import search from "../../assets/search.png";
 import { Link, NavLink } from "react-router-dom";
 import classes from "./Navbar.module.css";
 import SidebarBtn from "../Sidebar/index";
+import Searchbar from "../Searchbar/index";
 const Navbar = ({ sticky }) => {
-  const [searchHistory, setSearchHistory] = useState(false);
   const [keyWords, setKeyWords] = useState([]);
   const categoriesData = [
     "travel",
@@ -33,8 +33,6 @@ const Navbar = ({ sticky }) => {
   useEffect(() => {
     getKeywords();
   }, []);
-
-  console.log(keyWords);
   return (
     <>
       <nav
@@ -115,25 +113,7 @@ const Navbar = ({ sticky }) => {
                 sticky && "border border-stone-300"
               } flex relative bg-gray-100 rounded-xl min-h-9`}
             >
-              <input
-                onFocus={() => {
-                  setSearchHistory(true);
-                }}
-                onBlur={() => {
-                  setSearchHistory(false);
-                }}
-                type="text"
-                placeholder="Search heigh-resulation Images"
-                className="bg-gray-100 border-none text-[.9rem] outline-none px-4 h-9 rounded-xl w-full"
-              />
-              <button className="px-5">
-                <img src={search} className={`w-4 invert-[40%]`} alt="" />
-              </button>
-              {searchHistory && (
-                <div className="w-full min-h-[10rem] z-50 absolute top-11 left-0 bg-gray-50 backdrop-blur-md shadow-md border border-stone-300 py-2 px-3 rounded-md text-stone-500">
-                  <h1>Panding</h1>
-                </div>
-              )}
+              <Searchbar keywords={new Set([...keyWords])} />
             </form>
           </div>
           <div
