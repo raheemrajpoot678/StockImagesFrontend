@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { API_URL } from "../env";
 
 const CategoryHero = ({ category }) => {
   const [img, setImg] = useState("");
   const name = useParams().category;
   useEffect(() => {
     const getimg = async () => {
-      const res = await fetch(
-        `https://jade-fierce-katydid.cyclic.app/api/v1//getimgbycat/${name}`
-      );
+      const res = await fetch(`${API_URL}/getimgbycat/${name}`);
       const data = await res.json();
       setImg(data.img.imgUrl);
       console.log(data.img.imgUrl);

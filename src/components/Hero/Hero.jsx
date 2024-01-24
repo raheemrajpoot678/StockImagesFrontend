@@ -5,6 +5,8 @@ import ImagePreview from "../ImagePreview/ImagePreview";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Spiner from "../Spiner/Spiner";
+import { API_URL } from "../env";
+
 const Hero = () => {
   const [showimg, setShowimg] = useState(false);
   const [img1, setImg1] = useState("");
@@ -16,9 +18,7 @@ const Hero = () => {
 
   useEffect(() => {
     const getrandomImg = async () => {
-      const res = await fetch(
-        "https://jade-fierce-katydid.cyclic.app/api/v1/getheroimg"
-      );
+      const res = await fetch(`${API_URL}getheroimg`);
       const data = await res.json();
       console.log(data.img1.imgUrl);
       setImg1(data.img1);

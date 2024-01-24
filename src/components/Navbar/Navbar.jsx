@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import classes from "./Navbar.module.css";
 import SidebarBtn from "../Sidebar/index";
 import Searchbar from "../Searchbar/index";
+import { API_URL } from "../env";
 const Navbar = ({ sticky }) => {
   const [keyWords, setKeyWords] = useState([]);
   const categoriesData = [
@@ -26,9 +27,10 @@ const Navbar = ({ sticky }) => {
   };
 
   const getKeywords = async () => {
-    const res = await fetch("http://127.0.0.1:8080/api/v1/getinputwords");
+    const res = await fetch(`${API_URL}getinputwords`);
     const data = await res.json();
     setKeyWords(data.keyWords);
+    console.log();
   };
   useEffect(() => {
     getKeywords();

@@ -6,6 +6,7 @@ import downlaod from "../../assets/arrowSmallDown.png";
 import loading from "../../assets/loding2.webp";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import Spiner from "../Spiner/Spiner";
+import { API_URL } from "../env";
 
 const RelatedGallery = ({ category }) => {
   const [direct, setDirect] = useState(true);
@@ -39,9 +40,7 @@ const RelatedGallery = ({ category }) => {
     };
   }, [images]);
   async function fetchMoreImages() {
-    const res = await fetch(
-      `https://jade-fierce-katydid.cyclic.app/api/v1//imagesbycategory/${category}/${page}`
-    );
+    const res = await fetch(`${API_URL}/imagesbycategory/${category}/${page}`);
     const data = await res.json();
     if (data.length == 0) {
       setHasMore(false);

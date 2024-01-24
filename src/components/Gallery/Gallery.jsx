@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import downlaod from "../../assets/arrowSmallDown.png";
 import Spiner from "../Spiner/Spiner";
 import loading from "../../assets/loader.gif";
+import { API_URL } from "../env";
 
 const Gallery = () => {
   const [direct, setDirect] = useState(true);
@@ -37,9 +38,7 @@ const Gallery = () => {
     };
   }, [images]);
   async function fetchMoreImages() {
-    const res = await fetch(
-      `https://jade-fierce-katydid.cyclic.app/api/v1//imagesbycategory/home/${page}`
-    );
+    const res = await fetch(`${API_URL}/imagesbycategory/home/${page}`);
     const data = await res.json();
     if (data.length == 0) {
       setHasMore(false);

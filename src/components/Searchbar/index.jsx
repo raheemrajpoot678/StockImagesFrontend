@@ -4,7 +4,12 @@ const Searchbar = ({ keywords }) => {
   const [input, setInput] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [showKey, setShowKey] = useState([]);
-  console.log(keywords);
+
+  useEffect(() => {
+    window.onscroll = function () {
+      setIsOpen(false);
+    };
+  }, []);
 
   const getKeys = val => {
     setIsOpen(true);

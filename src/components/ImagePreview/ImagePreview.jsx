@@ -12,6 +12,7 @@ import DropdownButton from "../Buttons/DropdownButton";
 import ShareDropDown from "../Buttons/ShareDropDown";
 import Spiner from "../Spiner/Spiner";
 import RelatedGallery from "../RelatedGallery/index";
+import { API_URL } from "../env";
 
 const ImagePreview = () => {
   const [img, setImg] = useState(null);
@@ -28,9 +29,7 @@ const ImagePreview = () => {
   const { id } = useParams();
 
   const findImg = async () => {
-    const res = await fetch(
-      `https://jade-fierce-katydid.cyclic.app/api/v1//getimg/${id}`
-    );
+    const res = await fetch(`${API_URL}/getimg/${id}`);
     const item = await res.json();
     setCategory(item.img.category);
     setImg(item.img);
