@@ -3,6 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+.bor {
+  border: 2px solid firebrick;
+}
 
 @tailwind base;
 @tailwind components;

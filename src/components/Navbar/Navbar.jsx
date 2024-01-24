@@ -113,7 +113,7 @@ const Navbar = ({ sticky }) => {
               action=""
               className={` ${
                 sticky && "border border-stone-300"
-              } flex relative bg-gray-100 rounded-xl min-h-9`}
+              } flex relative bg-gray-100 rounded-xl min-h-9 justify-center`}
             >
               <Searchbar keywords={new Set([...keyWords])} />
             </form>

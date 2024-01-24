@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import icon from "@/assets/searchIcon.png";
 
 const Searchbar = ({ keywords }) => {
   const [input, setInput] = useState("");
@@ -29,9 +30,9 @@ const Searchbar = ({ keywords }) => {
   return (
     <>
       <div className="w-full relative">
-        <div className="w-full flex items-center">
+        <div className="w-full h-full items-center flex">
           <input
-            className="bg-transparent h-8 w-full outline-none border-none px-3"
+            className="bg-transparent w-full outline-none border-none px-3"
             placeholder="Type to search..."
             type="text"
             onChange={e => {
@@ -40,6 +41,9 @@ const Searchbar = ({ keywords }) => {
             }}
             value={input}
           />
+          <div className="mx-2 rounded-md px-[2px] py-[1px]">
+            <img className="w-6 cursor-pointer" src={icon} alt="" />
+          </div>
         </div>
         {showKey.length > 0 && input.length > 0 && isOpen && (
           <ul className="absolute top-10 left-0 w-full bg-gray-100 rounded-md  z-50">

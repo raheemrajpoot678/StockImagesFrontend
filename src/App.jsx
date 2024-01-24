@@ -8,10 +8,18 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/:category" element={<CategoryPage />} />
-        <Route path="/photos/:id" element={<DetailPage data={mainData} />} />
-        <Route path="/images/:id" element={<DetailPage data={heroImg} />} />
+        <Route exact path="/" element={<MainPage />} />
+        <Route exact path="/:category" element={<CategoryPage />} />
+        <Route
+          exact
+          path="/photos/:id"
+          element={<DetailPage data={mainData} />}
+        />
+        <Route
+          exact
+          path="/images/:id"
+          element={<DetailPage data={heroImg} />}
+        />
       </Routes>
     </>
   );
